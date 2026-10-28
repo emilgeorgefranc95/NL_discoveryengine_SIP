@@ -1,0 +1,19 @@
+{
+  "collection": "sip_evidence",
+  "record_count": 2151,
+  "distance": "cosine",
+  "model": "sentence-transformers/all-MiniLM-L6-v2",
+  "chunks_sha256": "9b39b3e2d8465049fc6b20c817f0dcd92dd6373b2f7a5e2829e0cb05f3583e58",
+  "vectors_sha256": "41f62a72f7a8618f818451f7402ef4bd9da2436da2f4abafe0364fd613a17259",
+  "by_source": {
+    "Play Store review": 899,
+    "Play Store top issue": 30,
+    "Reddit post": 105,
+    "Reddit comment": 1087,
+    "Reddit top issue": 30
+  },
+  "latest_item_date": "2026-10-19",
+  "built_on": "2026-10-28",
+  "chromadb_version": "1.5.9",
+  "orphan_index_folders_removed": 1
+}
