@@ -24,12 +24,12 @@ python -m pytest
 ```
 
 ## Deploy (Streamlit Community Cloud)
-The prebuilt vector DB (`data/vectordb/`) is committed so the app can start without the raw data. It holds third-party review and Reddit text, so keep this repo **private**.
+The prebuilt vector DB (`data/vectordb/`) is committed so the app can start without the raw data. It holds third-party review and Reddit text (public posts, kept for this academic project), so the vector DB is for demonstration use only.
 On share.streamlit.io choose this repo, main branch, file `src/app.py`, and under Advanced settings add the secret `GEMINI_API_KEY = "your key"`.
 
 ## About the data
 The dataset is a small, hand-picked sample (Groww Play Store reviews rated 1-3 stars, plus 27 Reddit threads), so it does not represent all investors.
-The raw reviews and posts were written by other people and are not included as files; `data/raw/` and `data/chunks/` are git-ignored. The prebuilt vector DB does contain the text, which is why the repo is private.
+The raw reviews and posts were written by other people and are not included as files; `data/raw/` and `data/chunks/` are git-ignored. The prebuilt vector DB does contain the text, for demonstration use only.
 To rebuild, collect your own copy of the four files listed in `problemstatement.txt`.
 
 ## License
