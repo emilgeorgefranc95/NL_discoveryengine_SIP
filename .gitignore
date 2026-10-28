@@ -218,3 +218,23 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# --- project ---
+.env
+.streamlit/secrets.toml
+.claude/
+*.log
+data/vectordb/*
+data/embeddings/*
+!data/vectordb/.gitkeep
+!data/embeddings/.gitkeep
+
+# third-party text (Play Store reviews, Reddit posts): not redistributed
+data/raw/*
+data/chunks/*
+!data/raw/.gitkeep
+!data/chunks/.gitkeep
+data/tests/judgments/*
+data/tests/results/run_*.json
+data/tests/results/variant_*
+data/tests/results/owner_spot_check.csv

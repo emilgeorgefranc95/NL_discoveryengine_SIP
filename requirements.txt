@@ -1,0 +1,14 @@
+# Phase 1 (data loading) needs only pandas. The rest are for later phases and are installed when those phases start.
+pandas>=2.2
+# phase 3 (embedding)
+numpy>=1.26
+sentence-transformers>=3.0
+# phase 4 (vector store)
+chromadb>=1.0
+# phase 5-6 (Gemini query rewrite and later the answer step)
+google-genai>=1.0
+python-dotenv>=1.0
+# later (UI)
+streamlit>=1.40
+# testing
+pytest>=8.0

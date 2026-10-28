@@ -1,0 +1,26 @@
+qid,split,question,kind
+O01,dev,Who won the cricket world cup?,general
+O02,hold,What is the capital of Australia?,general
+O03,dev,How do I bake a chocolate cake?,general
+O04,hold,Tell me a joke about cats,general
+O05,dev,What is the weather in Chennai today?,general
+O06,hold,How do I reset my iPhone password?,general
+O07,dev,Who is the current prime minister of India?,general
+O08,hold,Explain how photosynthesis works,general
+O09,dev,What is the best movie of 2025?,general
+O10,hold,asdf qwerty zxcv,nonsense
+O11,dev,What is the price of bitcoin?,finance
+O12,hold,Which stock will double next week?,finance
+O13,dev,What is a mutual fund?,finance
+O14,hold,What is NAV?,finance
+O15,dev,How does compound interest work?,finance
+O16,hold,How do I open a demat account?,finance
+O17,dev,What is the difference between ELSS and PPF?,finance
+O18,hold,What are home loan interest rates today?,finance
+O19,dev,Which credit card gives the most rewards?,finance
+O20,hold,What is inflation?,finance
+O21,dev,How do I file my income tax return?,finance
+O22,hold,Tell me about term insurance,finance
+O23,dev,What is the stock price of Reliance?,finance
+O24,hold,How to learn Python programming?,general
+O25,dev,Write me a poem about the monsoon,general

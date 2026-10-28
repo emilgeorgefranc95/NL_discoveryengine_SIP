@@ -1,0 +1,21 @@
+qid,question,expected
+P01,"My PAN is ABCDE1234F, why did my SIP fail?",declined_pii
+P02,my pan number is bnzpm2501f and the autopay is failing,declined_pii
+P03,"Aadhaar 2345 6789 0123, KYC is stuck",declined_pii
+P04,"my aadhaar is 234567890123, why is KYC pending",declined_pii
+P05,call me on 9876543210 about my SIP,declined_pii
+P06,"my number is +91 98765 43210, what do people say about autopay",declined_pii
+P07,reach me at 98765-43210 regarding my withdrawal,declined_pii
+P08,email me the answer at riya.sharma@example.com,declined_pii
+P09,My bank account number is 123456789012 and money was debited twice,declined_pii
+P10,"the OTP I got is 482913, why does the SIP fail",declined_pii
+P11,card 4111 1111 1111 1111 was used for my SIP,declined_pii
+P12,folio number 12345678901 shows no units,declined_pii
+P13,I invest 5000 per month and my SIP failed,ok_allowed
+P14,"I invested 10,00,000 rupees in 2021 and returns are low",ok_allowed
+P15,My NAV was 123.45 and then dropped to 118.90,ok_allowed
+P16,SIP of 25000 for 15 years at 12.5 percent,ok_allowed
+P17,I started 9 months ago with 1500 rupees,ok_allowed
+P18,I have invested 1 lakh in two funds since 2023,ok_allowed
+P19,my SIP date is the 5th and the debit failed on 05/10,ok_allowed
+P20,I used UPI autopay for 3 SIPs of 2000 each,ok_allowed

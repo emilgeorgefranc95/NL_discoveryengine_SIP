@@ -1,0 +1,841 @@
+{
+ "tag": "baseline",
+ "precision": {
+  "english": {
+   "all": {
+    "questions": 40,
+    "p@5_strict": 0.29,
+    "p@5_lenient": 0.6,
+    "hit@3_lenient": 0.85,
+    "hit@3_strict": 0.525,
+    "unjudged_pairs": 0
+   },
+   "dev": {
+    "questions": 20,
+    "p@5_strict": 0.31,
+    "p@5_lenient": 0.58,
+    "hit@3_lenient": 0.8,
+    "hit@3_strict": 0.45,
+    "unjudged_pairs": 0
+   },
+   "hold": {
+    "questions": 20,
+    "p@5_strict": 0.27,
+    "p@5_lenient": 0.62,
+    "hit@3_lenient": 0.9,
+    "hit@3_strict": 0.6,
+    "unjudged_pairs": 0
+   }
+  },
+  "hinglish": {
+   "all": {
+    "questions": 40,
+    "p@5_strict": 0.375,
+    "p@5_lenient": 0.67,
+    "hit@3_lenient": 0.925,
+    "hit@3_strict": 0.75,
+    "unjudged_pairs": 0
+   },
+   "dev": {
+    "questions": 20,
+    "p@5_strict": 0.39,
+    "p@5_lenient": 0.7,
+    "hit@3_lenient": 0.9,
+    "hit@3_strict": 0.75,
+    "unjudged_pairs": 0
+   },
+   "hold": {
+    "questions": 20,
+    "p@5_strict": 0.36,
+    "p@5_lenient": 0.64,
+    "hit@3_lenient": 0.95,
+    "hit@3_strict": 0.75,
+    "unjudged_pairs": 0
+   }
+  }
+ },
+ "by_type": {
+  "english": {
+   "behaviour": {
+    "questions": 24,
+    "p@5_strict": 0.183,
+    "p@5_lenient": 0.575,
+    "hit@3_lenient": 0.833,
+    "hit@3_strict": 0.375,
+    "unjudged_pairs": 0
+   },
+   "platform": {
+    "questions": 16,
+    "p@5_strict": 0.45,
+    "p@5_lenient": 0.637,
+    "hit@3_lenient": 0.875,
+    "hit@3_strict": 0.75,
+    "unjudged_pairs": 0
+   }
+  },
+  "hinglish": {
+   "behaviour": {
+    "questions": 22,
+    "p@5_strict": 0.264,
+    "p@5_lenient": 0.682,
+    "hit@3_lenient": 1.0,
+    "hit@3_strict": 0.682,
+    "unjudged_pairs": 0
+   },
+   "platform": {
+    "questions": 18,
+    "p@5_strict": 0.511,
+    "p@5_lenient": 0.656,
+    "hit@3_lenient": 0.833,
+    "hit@3_strict": 0.833,
+    "unjudged_pairs": 0
+   }
+  }
+ },
+ "by_type_holdout": {
+  "english": {
+   "behaviour": {
+    "questions": 12,
+    "p@5_strict": 0.2,
+    "p@5_lenient": 0.633,
+    "hit@3_lenient": 1.0,
+    "hit@3_strict": 0.5,
+    "unjudged_pairs": 0
+   },
+   "platform": {
+    "questions": 8,
+    "p@5_strict": 0.375,
+    "p@5_lenient": 0.6,
+    "hit@3_lenient": 0.75,
+    "hit@3_strict": 0.75,
+    "unjudged_pairs": 0
+   }
+  },
+  "hinglish": {
+   "behaviour": {
+    "questions": 12,
+    "p@5_strict": 0.267,
+    "p@5_lenient": 0.617,
+    "hit@3_lenient": 1.0,
+    "hit@3_strict": 0.667,
+    "unjudged_pairs": 0
+   },
+   "platform": {
+    "questions": 8,
+    "p@5_strict": 0.5,
+    "p@5_lenient": 0.675,
+    "hit@3_lenient": 0.875,
+    "hit@3_strict": 0.875,
+    "unjudged_pairs": 0
+   }
+  }
+ },
+ "hinglish_vs_english_paired": {
+  "english_20_topics": {
+   "questions": 20,
+   "p@5_strict": 0.4,
+   "p@5_lenient": 0.69,
+   "hit@3_lenient": 1.0,
+   "hit@3_strict": 0.75,
+   "unjudged_pairs": 0
+  },
+  "hinglish_40_questions": {
+   "questions": 40,
+   "p@5_strict": 0.375,
+   "p@5_lenient": 0.67,
+   "hit@3_lenient": 0.925,
+   "hit@3_strict": 0.75,
+   "unjudged_pairs": 0
+  },
+  "holdout": {
+   "english": {
+    "questions": 10,
+    "p@5_strict": 0.38,
+    "p@5_lenient": 0.68,
+    "hit@3_lenient": 1.0,
+    "hit@3_strict": 0.8,
+    "unjudged_pairs": 0
+   },
+   "hinglish": {
+    "questions": 20,
+    "p@5_strict": 0.36,
+    "p@5_lenient": 0.64,
+    "hit@3_lenient": 0.95,
+    "hit@3_strict": 0.75,
+    "unjudged_pairs": 0
+   }
+  }
+ },
+ "by_source_of_chunk": {
+  "Reddit": {
+   "chunks": 283,
+   "share_of_results": 0.711,
+   "strict": 0.155,
+   "lenient": 0.505
+  },
+  "Play": {
+   "chunks": 115,
+   "share_of_results": 0.289,
+   "strict": 0.774,
+   "lenient": 0.965
+  }
+ },
+ "gate_grid": [
+  {
+   "threshold": 0.2,
+   "in_scope_pass_dev": 1.0,
+   "oos_pass_dev": 0.923,
+   "oos_general_pass_dev": 0.833,
+   "oos_finance_pass_dev": 1.0,
+   "in_scope_pass_hold": 1.0,
+   "oos_pass_hold": 0.75,
+   "oos_general_pass_hold": 0.5,
+   "oos_finance_pass_hold": 1.0
+  },
+  {
+   "threshold": 0.21,
+   "in_scope_pass_dev": 1.0,
+   "oos_pass_dev": 0.846,
+   "oos_general_pass_dev": 0.667,
+   "oos_finance_pass_dev": 1.0,
+   "in_scope_pass_hold": 1.0,
+   "oos_pass_hold": 0.75,
+   "oos_general_pass_hold": 0.5,
+   "oos_finance_pass_hold": 1.0
+  },
+  {
+   "threshold": 0.22,
+   "in_scope_pass_dev": 1.0,
+   "oos_pass_dev": 0.846,
+   "oos_general_pass_dev": 0.667,
+   "oos_finance_pass_dev": 1.0,
+   "in_scope_pass_hold": 1.0,
+   "oos_pass_hold": 0.667,
+   "oos_general_pass_hold": 0.333,
+   "oos_finance_pass_hold": 1.0
+  },
+  {
+   "threshold": 0.23,
+   "in_scope_pass_dev": 1.0,
+   "oos_pass_dev": 0.846,
+   "oos_general_pass_dev": 0.667,
+   "oos_finance_pass_dev": 1.0,
+   "in_scope_pass_hold": 1.0,
+   "oos_pass_hold": 0.667,
+   "oos_general_pass_hold": 0.333,
+   "oos_finance_pass_hold": 1.0
+  },
+  {
+   "threshold": 0.24,
+   "in_scope_pass_dev": 1.0,
+   "oos_pass_dev": 0.846,
+   "oos_general_pass_dev": 0.667,
+   "oos_finance_pass_dev": 1.0,
+   "in_scope_pass_hold": 1.0,
+   "oos_pass_hold": 0.583,
+   "oos_general_pass_hold": 0.167,
+   "oos_finance_pass_hold": 1.0
+  },
+  {
+   "threshold": 0.25,
+   "in_scope_pass_dev": 1.0,
+   "oos_pass_dev": 0.846,
+   "oos_general_pass_dev": 0.667,
+   "oos_finance_pass_dev": 1.0,
+   "in_scope_pass_hold": 1.0,
+   "oos_pass_hold": 0.583,
+   "oos_general_pass_hold": 0.167,
+   "oos_finance_pass_hold": 1.0
+  },
+  {
+   "threshold": 0.26,
+   "in_scope_pass_dev": 1.0,
+   "oos_pass_dev": 0.769,
+   "oos_general_pass_dev": 0.5,
+   "oos_finance_pass_dev": 1.0,
+   "in_scope_pass_hold": 1.0,
+   "oos_pass_hold": 0.583,
+   "oos_general_pass_hold": 0.167,
+   "oos_finance_pass_hold": 1.0
+  },
+  {
+   "threshold": 0.27,
+   "in_scope_pass_dev": 1.0,
+   "oos_pass_dev": 0.769,
+   "oos_general_pass_dev": 0.5,
+   "oos_finance_pass_dev": 1.0,
+   "in_scope_pass_hold": 1.0,
+   "oos_pass_hold": 0.583,
+   "oos_general_pass_hold": 0.167,
+   "oos_finance_pass_hold": 1.0
+  },
+  {
+   "threshold": 0.28,
+   "in_scope_pass_dev": 1.0,
+   "oos_pass_dev": 0.692,
+   "oos_general_pass_dev": 0.333,
+   "oos_finance_pass_dev": 1.0,
+   "in_scope_pass_hold": 1.0,
+   "oos_pass_hold": 0.583,
+   "oos_general_pass_hold": 0.167,
+   "oos_finance_pass_hold": 1.0
+  },
+  {
+   "threshold": 0.29,
+   "in_scope_pass_dev": 1.0,
+   "oos_pass_dev": 0.615,
+   "oos_general_pass_dev": 0.167,
+   "oos_finance_pass_dev": 1.0,
+   "in_scope_pass_hold": 1.0,
+   "oos_pass_hold": 0.583,
+   "oos_general_pass_hold": 0.167,
+   "oos_finance_pass_hold": 1.0
+  },
+  {
+   "threshold": 0.3,
+   "in_scope_pass_dev": 1.0,
+   "oos_pass_dev": 0.615,
+   "oos_general_pass_dev": 0.167,
+   "oos_finance_pass_dev": 1.0,
+   "in_scope_pass_hold": 1.0,
+   "oos_pass_hold": 0.583,
+   "oos_general_pass_hold": 0.167,
+   "oos_finance_pass_hold": 1.0
+  },
+  {
+   "threshold": 0.31,
+   "in_scope_pass_dev": 1.0,
+   "oos_pass_dev": 0.615,
+   "oos_general_pass_dev": 0.167,
+   "oos_finance_pass_dev": 1.0,
+   "in_scope_pass_hold": 1.0,
+   "oos_pass_hold": 0.5,
+   "oos_general_pass_hold": 0.0,
+   "oos_finance_pass_hold": 1.0
+  },
+  {
+   "threshold": 0.32,
+   "in_scope_pass_dev": 1.0,
+   "oos_pass_dev": 0.538,
+   "oos_general_pass_dev": 0.167,
+   "oos_finance_pass_dev": 0.857,
+   "in_scope_pass_hold": 1.0,
+   "oos_pass_hold": 0.5,
+   "oos_general_pass_hold": 0.0,
+   "oos_finance_pass_hold": 1.0
+  },
+  {
+   "threshold": 0.33,
+   "in_scope_pass_dev": 1.0,
+   "oos_pass_dev": 0.538,
+   "oos_general_pass_dev": 0.167,
+   "oos_finance_pass_dev": 0.857,
+   "in_scope_pass_hold": 1.0,
+   "oos_pass_hold": 0.5,
+   "oos_general_pass_hold": 0.0,
+   "oos_finance_pass_hold": 1.0
+  },
+  {
+   "threshold": 0.34,
+   "in_scope_pass_dev": 0.975,
+   "oos_pass_dev": 0.538,
+   "oos_general_pass_dev": 0.167,
+   "oos_finance_pass_dev": 0.857,
+   "in_scope_pass_hold": 1.0,
+   "oos_pass_hold": 0.5,
+   "oos_general_pass_hold": 0.0,
+   "oos_finance_pass_hold": 1.0
+  },
+  {
+   "threshold": 0.35,
+   "in_scope_pass_dev": 0.975,
+   "oos_pass_dev": 0.462,
+   "oos_general_pass_dev": 0.167,
+   "oos_finance_pass_dev": 0.714,
+   "in_scope_pass_hold": 0.975,
+   "oos_pass_hold": 0.5,
+   "oos_general_pass_hold": 0.0,
+   "oos_finance_pass_hold": 1.0
+  },
+  {
+   "threshold": 0.36,
+   "in_scope_pass_dev": 0.975,
+   "oos_pass_dev": 0.385,
+   "oos_general_pass_dev": 0.0,
+   "oos_finance_pass_dev": 0.714,
+   "in_scope_pass_hold": 0.975,
+   "oos_pass_hold": 0.5,
+   "oos_general_pass_hold": 0.0,
+   "oos_finance_pass_hold": 1.0
+  },
+  {
+   "threshold": 0.37,
+   "in_scope_pass_dev": 0.975,
+   "oos_pass_dev": 0.385,
+   "oos_general_pass_dev": 0.0,
+   "oos_finance_pass_dev": 0.714,
+   "in_scope_pass_hold": 0.975,
+   "oos_pass_hold": 0.5,
+   "oos_general_pass_hold": 0.0,
+   "oos_finance_pass_hold": 1.0
+  },
+  {
+   "threshold": 0.38,
+   "in_scope_pass_dev": 0.975,
+   "oos_pass_dev": 0.385,
+   "oos_general_pass_dev": 0.0,
+   "oos_finance_pass_dev": 0.714,
+   "in_scope_pass_hold": 0.975,
+   "oos_pass_hold": 0.5,
+   "oos_general_pass_hold": 0.0,
+   "oos_finance_pass_hold": 1.0
+  },
+  {
+   "threshold": 0.39,
+   "in_scope_pass_dev": 0.975,
+   "oos_pass_dev": 0.308,
+   "oos_general_pass_dev": 0.0,
+   "oos_finance_pass_dev": 0.571,
+   "in_scope_pass_hold": 0.975,
+   "oos_pass_hold": 0.417,
+   "oos_general_pass_hold": 0.0,
+   "oos_finance_pass_hold": 0.833
+  },
+  {
+   "threshold": 0.4,
+   "in_scope_pass_dev": 0.95,
+   "oos_pass_dev": 0.231,
+   "oos_general_pass_dev": 0.0,
+   "oos_finance_pass_dev": 0.429,
+   "in_scope_pass_hold": 0.975,
+   "oos_pass_hold": 0.417,
+   "oos_general_pass_hold": 0.0,
+   "oos_finance_pass_hold": 0.833
+  },
+  {
+   "threshold": 0.41,
+   "in_scope_pass_dev": 0.95,
+   "oos_pass_dev": 0.231,
+   "oos_general_pass_dev": 0.0,
+   "oos_finance_pass_dev": 0.429,
+   "in_scope_pass_hold": 0.95,
+   "oos_pass_hold": 0.417,
+   "oos_general_pass_hold": 0.0,
+   "oos_finance_pass_hold": 0.833
+  },
+  {
+   "threshold": 0.42,
+   "in_scope_pass_dev": 0.95,
+   "oos_pass_dev": 0.231,
+   "oos_general_pass_dev": 0.0,
+   "oos_finance_pass_dev": 0.429,
+   "in_scope_pass_hold": 0.95,
+   "oos_pass_hold": 0.417,
+   "oos_general_pass_hold": 0.0,
+   "oos_finance_pass_hold": 0.833
+  },
+  {
+   "threshold": 0.43,
+   "in_scope_pass_dev": 0.95,
+   "oos_pass_dev": 0.231,
+   "oos_general_pass_dev": 0.0,
+   "oos_finance_pass_dev": 0.429,
+   "in_scope_pass_hold": 0.95,
+   "oos_pass_hold": 0.417,
+   "oos_general_pass_hold": 0.0,
+   "oos_finance_pass_hold": 0.833
+  },
+  {
+   "threshold": 0.44,
+   "in_scope_pass_dev": 0.95,
+   "oos_pass_dev": 0.231,
+   "oos_general_pass_dev": 0.0,
+   "oos_finance_pass_dev": 0.429,
+   "in_scope_pass_hold": 0.95,
+   "oos_pass_hold": 0.417,
+   "oos_general_pass_hold": 0.0,
+   "oos_finance_pass_hold": 0.833
+  },
+  {
+   "threshold": 0.45,
+   "in_scope_pass_dev": 0.95,
+   "oos_pass_dev": 0.231,
+   "oos_general_pass_dev": 0.0,
+   "oos_finance_pass_dev": 0.429,
+   "in_scope_pass_hold": 0.95,
+   "oos_pass_hold": 0.417,
+   "oos_general_pass_hold": 0.0,
+   "oos_finance_pass_hold": 0.833
+  },
+  {
+   "threshold": 0.46,
+   "in_scope_pass_dev": 0.95,
+   "oos_pass_dev": 0.231,
+   "oos_general_pass_dev": 0.0,
+   "oos_finance_pass_dev": 0.429,
+   "in_scope_pass_hold": 0.95,
+   "oos_pass_hold": 0.25,
+   "oos_general_pass_hold": 0.0,
+   "oos_finance_pass_hold": 0.5
+  },
+  {
+   "threshold": 0.47,
+   "in_scope_pass_dev": 0.95,
+   "oos_pass_dev": 0.231,
+   "oos_general_pass_dev": 0.0,
+   "oos_finance_pass_dev": 0.429,
+   "in_scope_pass_hold": 0.95,
+   "oos_pass_hold": 0.25,
+   "oos_general_pass_hold": 0.0,
+   "oos_finance_pass_hold": 0.5
+  },
+  {
+   "threshold": 0.48,
+   "in_scope_pass_dev": 0.95,
+   "oos_pass_dev": 0.231,
+   "oos_general_pass_dev": 0.0,
+   "oos_finance_pass_dev": 0.429,
+   "in_scope_pass_hold": 0.925,
+   "oos_pass_hold": 0.25,
+   "oos_general_pass_hold": 0.0,
+   "oos_finance_pass_hold": 0.5
+  },
+  {
+   "threshold": 0.49,
+   "in_scope_pass_dev": 0.95,
+   "oos_pass_dev": 0.231,
+   "oos_general_pass_dev": 0.0,
+   "oos_finance_pass_dev": 0.429,
+   "in_scope_pass_hold": 0.925,
+   "oos_pass_hold": 0.25,
+   "oos_general_pass_hold": 0.0,
+   "oos_finance_pass_hold": 0.5
+  },
+  {
+   "threshold": 0.5,
+   "in_scope_pass_dev": 0.95,
+   "oos_pass_dev": 0.231,
+   "oos_general_pass_dev": 0.0,
+   "oos_finance_pass_dev": 0.429,
+   "in_scope_pass_hold": 0.925,
+   "oos_pass_hold": 0.25,
+   "oos_general_pass_hold": 0.0,
+   "oos_finance_pass_hold": 0.5
+  },
+  {
+   "threshold": 0.51,
+   "in_scope_pass_dev": 0.95,
+   "oos_pass_dev": 0.231,
+   "oos_general_pass_dev": 0.0,
+   "oos_finance_pass_dev": 0.429,
+   "in_scope_pass_hold": 0.9,
+   "oos_pass_hold": 0.25,
+   "oos_general_pass_hold": 0.0,
+   "oos_finance_pass_hold": 0.5
+  },
+  {
+   "threshold": 0.52,
+   "in_scope_pass_dev": 0.95,
+   "oos_pass_dev": 0.231,
+   "oos_general_pass_dev": 0.0,
+   "oos_finance_pass_dev": 0.429,
+   "in_scope_pass_hold": 0.9,
+   "oos_pass_hold": 0.25,
+   "oos_general_pass_hold": 0.0,
+   "oos_finance_pass_hold": 0.5
+  },
+  {
+   "threshold": 0.53,
+   "in_scope_pass_dev": 0.95,
+   "oos_pass_dev": 0.154,
+   "oos_general_pass_dev": 0.0,
+   "oos_finance_pass_dev": 0.286,
+   "in_scope_pass_hold": 0.85,
+   "oos_pass_hold": 0.25,
+   "oos_general_pass_hold": 0.0,
+   "oos_finance_pass_hold": 0.5
+  },
+  {
+   "threshold": 0.54,
+   "in_scope_pass_dev": 0.925,
+   "oos_pass_dev": 0.154,
+   "oos_general_pass_dev": 0.0,
+   "oos_finance_pass_dev": 0.286,
+   "in_scope_pass_hold": 0.775,
+   "oos_pass_hold": 0.167,
+   "oos_general_pass_hold": 0.0,
+   "oos_finance_pass_hold": 0.333
+  },
+  {
+   "threshold": 0.55,
+   "in_scope_pass_dev": 0.875,
+   "oos_pass_dev": 0.154,
+   "oos_general_pass_dev": 0.0,
+   "oos_finance_pass_dev": 0.286,
+   "in_scope_pass_hold": 0.775,
+   "oos_pass_hold": 0.167,
+   "oos_general_pass_hold": 0.0,
+   "oos_finance_pass_hold": 0.333
+  },
+  {
+   "threshold": 0.56,
+   "in_scope_pass_dev": 0.875,
+   "oos_pass_dev": 0.154,
+   "oos_general_pass_dev": 0.0,
+   "oos_finance_pass_dev": 0.286,
+   "in_scope_pass_hold": 0.775,
+   "oos_pass_hold": 0.167,
+   "oos_general_pass_hold": 0.0,
+   "oos_finance_pass_hold": 0.333
+  },
+  {
+   "threshold": 0.57,
+   "in_scope_pass_dev": 0.875,
+   "oos_pass_dev": 0.154,
+   "oos_general_pass_dev": 0.0,
+   "oos_finance_pass_dev": 0.286,
+   "in_scope_pass_hold": 0.725,
+   "oos_pass_hold": 0.167,
+   "oos_general_pass_hold": 0.0,
+   "oos_finance_pass_hold": 0.333
+  },
+  {
+   "threshold": 0.58,
+   "in_scope_pass_dev": 0.825,
+   "oos_pass_dev": 0.154,
+   "oos_general_pass_dev": 0.0,
+   "oos_finance_pass_dev": 0.286,
+   "in_scope_pass_hold": 0.7,
+   "oos_pass_hold": 0.167,
+   "oos_general_pass_hold": 0.0,
+   "oos_finance_pass_hold": 0.333
+  },
+  {
+   "threshold": 0.59,
+   "in_scope_pass_dev": 0.775,
+   "oos_pass_dev": 0.154,
+   "oos_general_pass_dev": 0.0,
+   "oos_finance_pass_dev": 0.286,
+   "in_scope_pass_hold": 0.65,
+   "oos_pass_hold": 0.167,
+   "oos_general_pass_hold": 0.0,
+   "oos_finance_pass_hold": 0.333
+  },
+  {
+   "threshold": 0.6,
+   "in_scope_pass_dev": 0.75,
+   "oos_pass_dev": 0.154,
+   "oos_general_pass_dev": 0.0,
+   "oos_finance_pass_dev": 0.286,
+   "in_scope_pass_hold": 0.65,
+   "oos_pass_hold": 0.167,
+   "oos_general_pass_hold": 0.0,
+   "oos_finance_pass_hold": 0.333
+  },
+  {
+   "threshold": 0.61,
+   "in_scope_pass_dev": 0.725,
+   "oos_pass_dev": 0.154,
+   "oos_general_pass_dev": 0.0,
+   "oos_finance_pass_dev": 0.286,
+   "in_scope_pass_hold": 0.65,
+   "oos_pass_hold": 0.167,
+   "oos_general_pass_hold": 0.0,
+   "oos_finance_pass_hold": 0.333
+  },
+  {
+   "threshold": 0.62,
+   "in_scope_pass_dev": 0.65,
+   "oos_pass_dev": 0.077,
+   "oos_general_pass_dev": 0.0,
+   "oos_finance_pass_dev": 0.143,
+   "in_scope_pass_hold": 0.625,
+   "oos_pass_hold": 0.167,
+   "oos_general_pass_hold": 0.0,
+   "oos_finance_pass_hold": 0.333
+  },
+  {
+   "threshold": 0.63,
+   "in_scope_pass_dev": 0.625,
+   "oos_pass_dev": 0.0,
+   "oos_general_pass_dev": 0.0,
+   "oos_finance_pass_dev": 0.0,
+   "in_scope_pass_hold": 0.625,
+   "oos_pass_hold": 0.083,
+   "oos_general_pass_hold": 0.0,
+   "oos_finance_pass_hold": 0.167
+  },
+  {
+   "threshold": 0.64,
+   "in_scope_pass_dev": 0.6,
+   "oos_pass_dev": 0.0,
+   "oos_general_pass_dev": 0.0,
+   "oos_finance_pass_dev": 0.0,
+   "in_scope_pass_hold": 0.575,
+   "oos_pass_hold": 0.083,
+   "oos_general_pass_hold": 0.0,
+   "oos_finance_pass_hold": 0.167
+  },
+  {
+   "threshold": 0.65,
+   "in_scope_pass_dev": 0.55,
+   "oos_pass_dev": 0.0,
+   "oos_general_pass_dev": 0.0,
+   "oos_finance_pass_dev": 0.0,
+   "in_scope_pass_hold": 0.55,
+   "oos_pass_hold": 0.083,
+   "oos_general_pass_hold": 0.0,
+   "oos_finance_pass_hold": 0.167
+  },
+  {
+   "threshold": 0.66,
+   "in_scope_pass_dev": 0.525,
+   "oos_pass_dev": 0.0,
+   "oos_general_pass_dev": 0.0,
+   "oos_finance_pass_dev": 0.0,
+   "in_scope_pass_hold": 0.5,
+   "oos_pass_hold": 0.083,
+   "oos_general_pass_hold": 0.0,
+   "oos_finance_pass_hold": 0.167
+  },
+  {
+   "threshold": 0.67,
+   "in_scope_pass_dev": 0.475,
+   "oos_pass_dev": 0.0,
+   "oos_general_pass_dev": 0.0,
+   "oos_finance_pass_dev": 0.0,
+   "in_scope_pass_hold": 0.425,
+   "oos_pass_hold": 0.0,
+   "oos_general_pass_hold": 0.0,
+   "oos_finance_pass_hold": 0.0
+  },
+  {
+   "threshold": 0.68,
+   "in_scope_pass_dev": 0.45,
+   "oos_pass_dev": 0.0,
+   "oos_general_pass_dev": 0.0,
+   "oos_finance_pass_dev": 0.0,
+   "in_scope_pass_hold": 0.425,
+   "oos_pass_hold": 0.0,
+   "oos_general_pass_hold": 0.0,
+   "oos_finance_pass_hold": 0.0
+  },
+  {
+   "threshold": 0.69,
+   "in_scope_pass_dev": 0.45,
+   "oos_pass_dev": 0.0,
+   "oos_general_pass_dev": 0.0,
+   "oos_finance_pass_dev": 0.0,
+   "in_scope_pass_hold": 0.4,
+   "oos_pass_hold": 0.0,
+   "oos_general_pass_hold": 0.0,
+   "oos_finance_pass_hold": 0.0
+  },
+  {
+   "threshold": 0.7,
+   "in_scope_pass_dev": 0.325,
+   "oos_pass_dev": 0.0,
+   "oos_general_pass_dev": 0.0,
+   "oos_finance_pass_dev": 0.0,
+   "in_scope_pass_hold": 0.35,
+   "oos_pass_hold": 0.0,
+   "oos_general_pass_hold": 0.0,
+   "oos_finance_pass_hold": 0.0
+  },
+  {
+   "threshold": 0.71,
+   "in_scope_pass_dev": 0.3,
+   "oos_pass_dev": 0.0,
+   "oos_general_pass_dev": 0.0,
+   "oos_finance_pass_dev": 0.0,
+   "in_scope_pass_hold": 0.35,
+   "oos_pass_hold": 0.0,
+   "oos_general_pass_hold": 0.0,
+   "oos_finance_pass_hold": 0.0
+  },
+  {
+   "threshold": 0.72,
+   "in_scope_pass_dev": 0.275,
+   "oos_pass_dev": 0.0,
+   "oos_general_pass_dev": 0.0,
+   "oos_finance_pass_dev": 0.0,
+   "in_scope_pass_hold": 0.3,
+   "oos_pass_hold": 0.0,
+   "oos_general_pass_hold": 0.0,
+   "oos_finance_pass_hold": 0.0
+  },
+  {
+   "threshold": 0.73,
+   "in_scope_pass_dev": 0.25,
+   "oos_pass_dev": 0.0,
+   "oos_general_pass_dev": 0.0,
+   "oos_finance_pass_dev": 0.0,
+   "in_scope_pass_hold": 0.225,
+   "oos_pass_hold": 0.0,
+   "oos_general_pass_hold": 0.0,
+   "oos_finance_pass_hold": 0.0
+  },
+  {
+   "threshold": 0.74,
+   "in_scope_pass_dev": 0.2,
+   "oos_pass_dev": 0.0,
+   "oos_general_pass_dev": 0.0,
+   "oos_finance_pass_dev": 0.0,
+   "in_scope_pass_hold": 0.175,
+   "oos_pass_hold": 0.0,
+   "oos_general_pass_hold": 0.0,
+   "oos_finance_pass_hold": 0.0
+  },
+  {
+   "threshold": 0.75,
+   "in_scope_pass_dev": 0.2,
+   "oos_pass_dev": 0.0,
+   "oos_general_pass_dev": 0.0,
+   "oos_finance_pass_dev": 0.0,
+   "in_scope_pass_hold": 0.15,
+   "oos_pass_hold": 0.0,
+   "oos_general_pass_hold": 0.0,
+   "oos_finance_pass_hold": 0.0
+  }
+ ],
+ "gate_choice_rule": "highest threshold with at least 95% of dev in-scope questions passing",
+ "gate_choice": {
+  "threshold": 0.53,
+  "in_scope_pass_dev": 0.95,
+  "oos_pass_dev": 0.154,
+  "oos_general_pass_dev": 0.0,
+  "oos_finance_pass_dev": 0.286,
+  "in_scope_pass_hold": 0.85,
+  "oos_pass_hold": 0.25,
+  "oos_general_pass_hold": 0.0,
+  "oos_finance_pass_hold": 0.5
+ },
+ "sim_summary": {
+  "in_scope_min": 0.33,
+  "oos_general_max": 0.3502,
+  "oos_finance_min": 0.3109,
+  "oos_finance_max": 0.6662
+ },
+ "structure": {
+  "results_checked": 80,
+  "problems": {}
+ },
+ "speed": {
+  "retrieval_median_s": 0.017,
+  "retrieval_max_s": 0.049,
+  "gemini_rewrite_median_s": 1.962,
+  "gemini_rewrite_max_s": 6.954
+ },
+ "rewrites_used": 40,
+ "judge_agreement": {
+  "pairs": 60,
+  "exact": 0.867,
+  "relevant_or_not (1-2 vs 0)": 0.917,
+  "directly_answers_or_not (2 vs 0-1)": 0.95
+ },
+ "score_distribution": {
+  "0": 144,
+  "1": 121,
+  "2": 133
+ }
+}

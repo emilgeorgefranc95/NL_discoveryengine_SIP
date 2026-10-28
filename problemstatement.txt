@@ -1,0 +1,101 @@
+# Problem Statement: AI Discovery Engine (RAG chatbot), new corpus
+
+> Status: scoping only. Do NOT start building. Work proceeds step by step on the owner's instruction.
+
+## What we are building
+
+A **RAG-based chatbot** for the AI discovery engine. It is a **prototype / project to test RAG**.
+
+## Corpus scope
+
+Use **only these four files and nothing beyond them**:
+
+1. Play Store, relevant reviews (899 rows, filtered from the 1-3 star Groww reviews):
+   `/Users/emilfranc/test/discovery_engine/data/New Dataset/Playstore/playstore_relevant_reviews.csv`
+2. Play Store, top issues (30 rows):
+   `/Users/emilfranc/test/discovery_engine/data/New Dataset/Playstore/playstore_top_issues.csv`
+3. Reddit, raw posts and comments (1,545 rows, unfiltered):
+   `/Users/emilfranc/test/discovery_engine/data/New Dataset/Reddit/reddit_raw_all.csv`
+4. Reddit, top issues (30 rows):
+   `/Users/emilfranc/test/discovery_engine/data/New Dataset/Reddit/reddit_top_issues.csv`
+
+Working copies of these four files are kept read-only in `rag-chatbot-new/data/raw/`; the build reads from there. The originals above are not modified.
+
+The previous corpus (`data/datasets/sip_evidence_all_sources.csv`) and the old `rag_chatbot/` folder are NOT part of this build.
+
+## What the AI discovery engine does (working prototype)
+
+- Answers queries related to **SIP / mutual fund investments only**. Example questions:
+  - "Why do people start a SIP, and what do they expect to happen?"
+  - "What leads investors to pause, reduce or stop a SIP?"
+  - "What do SIP investors check, and how often, once they have started?"
+  - "What separates SIP investors who continue from those who quietly drop off?"
+  - "What unmet needs emerge consistently across conversations among SIP investors?"
+- When asked a question, gives an answer **based on the dataset first and does not give the entire content**. Towards the end of the answer it gives a **link that can be expanded**, so the user can see the Play Store reviews / Reddit discussions the answer was derived from.
+- Shows **one clear citation link in every answer**.
+- **Refuses opinionated / portfolio questions** (for example "Should I buy/sell?") with a polite, facts-only message and a relevant educational link.
+- **Tiny UI:** a welcome line, 3 example questions, and a note: "Facts-only. No investment advice."
+
+## Key constraints
+
+- **Public sources only.** No screenshots of the app back-end. No third-party blogs as sources.
+- **No PII.** Do not accept or store PAN, Aadhaar, account numbers, OTPs, emails or phone numbers.
+- **No performance claims.** Do not compute or compare returns. Link to the official factsheet if asked.
+- **Clarity and transparency.** Keep answers to 3 sentences or fewer. Add "Last updated from sources: <date>".
+
+## RAG pipeline
+
+### Data ingestion
+
+1. **Upload the documents:** the four files listed above.
+2. **Chunking:** use the structure of the data as it is in those four files (nothing else).
+3. **Embedding:** free and lightweight embedding model, `sentence-transformers/all-MiniLM-L6-v2` (Hugging Face).
+4. **Storing in the vector space:** ChromaDB.
+
+### Data retrieval
+
+1. Question. If it is Hinglish or Hindi, Gemini first rewrites it into plain English (the rewrite is used only for search; the answer is always in English).
+2. Embedding: same model as ingestion (`all-MiniLM-L6-v2`).
+3. Find the right chunk(s) from the vector space.
+4. LLM prompt generation. LLM: **Gemini API key** (changed from Mistral, see decisions).
+5. Answer generation.
+
+## UI
+
+1. Simple, basic UI.
+2. Colours: the Groww website colours.
+3. Streamlit.
+
+## Testing
+
+Add **edge case testing** (for example: advice requests, PII in the question, off-topic questions, empty or very long input, questions the corpus cannot answer, non-English or Hinglish questions).
+
+## Decisions confirmed by the owner (28 Oct 2026)
+
+1. **Play Store links:** individual Play Store reviews have no link of their own. The expandable section shows the review text, and the link goes to the Groww app page. Reddit answers link to the thread. Accepted.
+2. **Reddit raw file stays in scope** (`reddit_raw_all.csv`). Off-topic rows are fine as long as the content is about SIPs or mutual funds.
+3. **Hinglish:** pick the best embedding model for retrieving Hinglish. The answer/summary is always written in English. If the user opens "see the sources" and a source row is Hinglish, show it as written.
+4. **LLM: Gemini** (not Mistral). The user pastes the key into `.env`; it is never stored in the project or committed.
+5. **Dates:** go ahead with the dates we have. Only 17 of 67 Reddit threads have exact dates, 41 are estimated to the month, 9 have none. "Last updated from sources" uses the dates available.
+
+## Notes
+
+- The two "top issues" files are AI-written summaries of the other two files, so an answer built from them should still cite a source review or thread.
+- Reddit usernames were removed from the data files. Keep it that way.
+- LLM is Gemini (decision 4). The earlier line "Mistral API key" in the retrieval steps is superseded.
+
+## Embedding benchmark (28 Oct 2026, run on the new data, 20 topics x 1 English + 2 Hinglish questions)
+
+Relevance was judged automatically from the issue tags in the two filtered files, so treat it as indicative. Score = share of the top-5 results that are relevant.
+
+| Model | English question | Hinglish question |
+|---|---|---|
+| all-MiniLM-L6-v2 | 0.63 | 0.08 |
+| paraphrase-multilingual-MiniLM-L12-v2 | 0.63 | 0.17 |
+| multilingual-e5-small | 0.51 | 0.17 |
+| BAAI/bge-m3 (2.2 GB) | 0.66 | 0.30 |
+
+Findings:
+- The corpus is almost all English (no Hindi/Hinglish in the Play Store file, about 7 Reddit rows), so Hinglish only matters on the question side.
+- Even the best multilingual model (bge-m3) gets under half of its English score on Hinglish typed in Roman letters, and it is 2.2 GB and slow on CPU.
+- Recommended plan: keep `all-MiniLM-L6-v2` (as specified) and let Gemini rewrite a Hinglish/Hindi question into plain English before retrieval. The rewritten question should score like the English column (about 0.63). The answer is written in English; Hinglish source rows are shown as written in the "see sources" section. **Confirmed by the owner (28 Oct 2026):** keep `all-MiniLM-L6-v2`; Gemini rewrites Hinglish/Hindi questions into English before retrieval; answers are in English.
