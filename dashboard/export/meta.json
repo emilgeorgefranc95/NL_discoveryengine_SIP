@@ -1,0 +1,47 @@
+{
+ "as_of": "2026-10-26",
+ "built_at": "2026-10-31T01:33:56",
+ "tagged": 2110,
+ "relevant": 1967,
+ "strong": 1556,
+ "lapse_stories": 221,
+ "definitions": {
+  "tagged": "Tagged = an item (post, comment, review) that went through the final (round 2) coding pass and received a label.",
+  "relevant": "Relevant = a tagged item the engine rated Y (clear) or P (partial): it carries real evidence for at least one of the nine research questions. Items rated N are tagged but not relevant.",
+  "lapse_story": "Lapse story = a relevant item whose author says they stopped, paused or reduced their SIP. People only considering stopping are not counted."
+ },
+ "low_confidence_below": 15,
+ "embed_model": "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2",
+ "questions": {
+  "Q1": "Why do people start a SIP, and what do they expect?",
+  "Q2": "What changes in their behaviour in the months after starting?",
+  "Q3": "What leads them to pause, reduce or stop?",
+  "Q4": "What do they check, and how often?",
+  "Q5": "What confuses or worries them?",
+  "Q6": "What do they do outside the app when unsure?",
+  "Q7": "What separates those who continue from those who drop off?",
+  "Q8": "How do patterns differ across segments?",
+  "Q9": "What unmet needs come up again and again?"
+ },
+ "metric_tree": {
+  "B1": "Instalments go through",
+  "B2": "Can afford to keep paying, and can adjust",
+  "B3": "Believes it is working",
+  "B4": "Trusts the platform and gets help",
+  "B5": "Has no pull to somewhere else or to forgetting"
+ },
+ "by_source": {
+  "Reddit": {
+   "tagged": 1379,
+   "relevant": 1369
+  },
+  "Play Store": {
+   "tagged": 196,
+   "relevant": 178
+  },
+  "YouTube": {
+   "tagged": 535,
+   "relevant": 420
+  }
+ }
+}

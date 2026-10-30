@@ -10,5 +10,8 @@ google-genai>=1.0
 python-dotenv>=1.0
 # later (UI)
 streamlit>=1.40
+# dashboard tabs (streamlit_app.py)
+plotly>=5.22
+fastembed>=0.4
 # testing
 pytest>=8.0

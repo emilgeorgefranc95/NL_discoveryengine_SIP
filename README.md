@@ -19,13 +19,17 @@ pip install -r requirements.txt
 cp .env.example .env            # then paste your GEMINI_API_KEY
 # put the four source CSVs in data/raw/ (see problemstatement.txt), then:
 python src/load.py && python src/chunk.py && python src/embed.py && python src/store.py
-streamlit run src/app.py
+streamlit run src/app.py            # the chatbot alone
+streamlit run streamlit_app.py      # the chatbot plus the dashboard tabs
 python -m pytest
 ```
 
 ## Deploy (Streamlit Community Cloud)
 The prebuilt vector DB (`data/vectordb/`) is committed so the app can start without the raw data. It holds third-party review and Reddit text (public posts, kept for this academic project), so the vector DB is for demonstration use only.
-On share.streamlit.io choose this repo, main branch, file `src/app.py`, and under Advanced settings add the secret `GEMINI_API_KEY = "your key"`.
+On share.streamlit.io choose this repo, main branch, file `streamlit_app.py` (chatbot plus dashboard tabs; `src/app.py` is still the chatbot on its own), and under Advanced settings add the secret `GEMINI_API_KEY = "your key"`.
+
+## Dashboard tabs
+`streamlit_app.py` shows the chatbot (`src/app.py`, unchanged) in the first tab and the discovery-engine dashboard in eight more: overview, opportunity ranking, the nine research questions, metric tree, segments, evidence explorer, ask the data, and validation. The dashboard code is in `dashboard/` and reads only `dashboard/export/`, which `dashboard/pipeline/export.py` builds from the project's coded data (that data is not in this repo, so the pipeline files are for reference). Severity bands, fixable ratings and the metric-tree branches are the analyst's draft judgement and are marked as such on the pages. `dashboard/export/` holds short excerpts of public posts and reviews, for demonstration use only, like the vector DB.
 
 ## About the data
 The dataset is a small, hand-picked sample (Groww Play Store reviews rated 1-3 stars, plus 27 Reddit threads), so it does not represent all investors.
