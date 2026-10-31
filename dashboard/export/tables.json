@@ -23,7 +23,7 @@
    ],
    [
     "Relevant after round 2",
-    1369
+    1368
    ]
   ],
   "Play Store": [
@@ -63,7 +63,7 @@
    ],
    [
     "Relevant after round 2",
-    420
+    419
    ]
   ]
  },
@@ -82,23 +82,23 @@
   ],
   [
    "Relevant (Y or P)",
-   1967
+   1965
   ],
   [
    "Strong (Y)",
-   1556
+   1553
   ]
  ],
  "dates": {
   "Reddit": {
    "first": "2021-11-06",
    "last": "2026-10-24",
-   "n": 1369,
+   "n": 1368,
    "by_year": {
     "2021": 5,
     "2022": 34,
     "2023": 139,
-    "2024": 429,
+    "2024": 428,
     "2025": 288,
     "2026": 474
    }
@@ -115,7 +115,7 @@
   "YouTube": {
    "first": "2018-10-27",
    "last": "2026-10-26",
-   "n": 420,
+   "n": 419,
    "by_year": {
     "2018": 2,
     "2019": 10,
@@ -124,7 +124,7 @@
     "2022": 19,
     "2023": 42,
     "2024": 69,
-    "2025": 88,
+    "2025": 87,
     "2026": 142
    }
   }
@@ -259,16 +259,6 @@
     "fixable_why": "Pause, skip and edit controls are product features.",
     "quotes": [
      {
-      "id": "yt_UgwKSJ2PG0edfSmaW3V4AaABAg",
-      "quote": "my sip I had not pay for 3 month it's automatic stop sip in investment app",
-      "source": "YouTube comment",
-      "date": "about 2024-10",
-      "link": "https://www.youtube.com/watch?v=_BtRbbnkBMM&lc=UgwKSJ2PG0edfSmaW3V4AaABAg",
-      "outcome": "STOPPED",
-      "group": "YouTube",
-      "match": true
-     },
-     {
       "id": "1eyk812",
       "quote": "Due to change of plans I have cancelled my SIP.",
       "source": "Reddit post",
@@ -276,6 +266,16 @@
       "link": "https://www.reddit.com/r/IndianStockMarket/comments/1eyk812/please_clarify_my_doubt_on_sip_cancellation/",
       "outcome": "STOPPED",
       "group": "Reddit",
+      "match": true
+     },
+     {
+      "id": "yt_UgwKSJ2PG0edfSmaW3V4AaABAg",
+      "quote": "my sip I had not pay for 3 month it's automatic stop sip in investment app",
+      "source": "YouTube comment",
+      "date": "about 2024-10",
+      "link": "https://www.youtube.com/watch?v=_BtRbbnkBMM&lc=UgwKSJ2PG0edfSmaW3V4AaABAg",
+      "outcome": "STOPPED",
+      "group": "YouTube",
       "match": true
      }
     ],
@@ -455,92 +455,6 @@
     "score": 29
    },
    {
-    "theme": "STOP_CONFUSION",
-    "label": "Confusion",
-    "posts": 16,
-    "pct": 0.8,
-    "lapse_stories": 9,
-    "known_outcome": 15,
-    "lapse_share": 0.6,
-    "by_source": {
-     "Reddit": 11,
-     "Play Store": 1,
-     "YouTube": 4
-    },
-    "severity": "High",
-    "branch": "B3",
-    "branch_name": "Believes it is working",
-    "fixable": "High",
-    "fixable_why": "Plain-language explanations are allowed.",
-    "quotes": [
-     {
-      "id": "1eyk812",
-      "quote": "Due to change of plans I have cancelled my SIP.",
-      "source": "Reddit post",
-      "date": "2024-08-22",
-      "link": "https://www.reddit.com/r/IndianStockMarket/comments/1eyk812/please_clarify_my_doubt_on_sip_cancellation/",
-      "outcome": "STOPPED",
-      "group": "Reddit",
-      "match": false
-     },
-     {
-      "id": "yt_UgyV5uePjbeGFVxa4wF4AaABAg",
-      "quote": "maine sip ko cancel kar diya redeem karne ki jagah...ab main wo amount ko kaise withdraw karu?",
-      "source": "YouTube comment",
-      "date": "about 2025-10",
-      "link": "https://www.youtube.com/watch?v=VklP_Uv7jwQ&lc=UgyV5uePjbeGFVxa4wF4AaABAg",
-      "outcome": "STOPPED",
-      "group": "YouTube",
-      "match": false
-     }
-    ],
-    "raw_score": 0.48,
-    "score": 24
-   },
-   {
-    "theme": "STOP_LOST_TRUST",
-    "label": "Lost trust",
-    "posts": 26,
-    "pct": 1.3,
-    "lapse_stories": 12,
-    "known_outcome": 24,
-    "lapse_share": 0.5,
-    "by_source": {
-     "Reddit": 11,
-     "Play Store": 11,
-     "YouTube": 4
-    },
-    "severity": "High",
-    "branch": "B4",
-    "branch_name": "Trusts the platform and gets help",
-    "fixable": "Medium",
-    "fixable_why": "Rebuilding trust comes from fixing the failures behind it.",
-    "quotes": [
-     {
-      "id": "1olkess",
-      "quote": "I’ve actually stopped my SIP and started redeeming my investments from that scheme.",
-      "source": "Reddit post",
-      "date": "2025-11-01",
-      "link": "https://www.reddit.com/r/IndianStockMarket/comments/1olkess/congratulations_you_now_own_lenskart_shares/",
-      "outcome": "STOPPED",
-      "group": "Reddit",
-      "match": false
-     },
-     {
-      "id": "yt_UgxQ9f-MSO5kP2Pi91R4AaABAg",
-      "quote": "I am glad I stopped my SIP two years ago.",
-      "source": "YouTube comment",
-      "date": "about 2026-10",
-      "link": "https://www.youtube.com/watch?v=w_b8_rtiZKg&lc=UgxQ9f-MSO5kP2Pi91R4AaABAg",
-      "outcome": "STOPPED",
-      "group": "YouTube",
-      "match": false
-     }
-    ],
-    "raw_score": 0.39,
-    "score": 19
-   },
-   {
     "theme": "STOP_PASSIVE_DRIFT",
     "label": "Passive drift",
     "posts": 22,
@@ -670,6 +584,49 @@
     "score": 15
    },
    {
+    "theme": "STOP_LOST_TRUST",
+    "label": "Lost trust",
+    "posts": 14,
+    "pct": 0.7,
+    "lapse_stories": 7,
+    "known_outcome": 12,
+    "lapse_share": 0.583,
+    "by_source": {
+     "Reddit": 4,
+     "Play Store": 9,
+     "YouTube": 1
+    },
+    "severity": "High",
+    "branch": "B4",
+    "branch_name": "Trusts the platform and gets help",
+    "fixable": "Medium",
+    "fixable_why": "Rebuilding trust comes from fixing the failures behind it.",
+    "quotes": [
+     {
+      "id": "oiot470",
+      "quote": "I have recently heard bad things about Motilal oswal midcap and Sbi healthcare funds, so I paused them from some months.",
+      "source": "Reddit comment",
+      "date": "2026-04-28",
+      "link": "https://www.reddit.com/r/IndianStockMarket/comments/1sx2woh/i_started_with_500_and_zero_clarity_7_years_later/oiot470/",
+      "outcome": "PAUSED",
+      "group": "Reddit",
+      "match": false
+     },
+     {
+      "id": "d62bc2ae-f70b-42dd-bb59-00ad3151cb3f",
+      "quote": "By this experience I will not invest any.",
+      "source": "Play Store review",
+      "date": "2026-09-08",
+      "link": "https://play.google.com/store/apps/details?id=com.nextbillion.groww&reviewId=d62bc2ae-f70b-42dd-bb59-00ad3151cb3f",
+      "outcome": "STOPPED",
+      "group": "Play Store",
+      "match": false
+     }
+    ],
+    "raw_score": 0.24485999999999997,
+    "score": 12
+   },
+   {
     "theme": "PLAT_EXEC_DELAY",
     "label": "Order or debit delay",
     "posts": 25,
@@ -752,8 +709,94 @@
       "match": true
      }
     ],
-    "raw_score": 0.16646766169154228,
+    "raw_score": 0.16409638554216868,
     "score": 8
+   },
+   {
+    "theme": "STOP_CONFUSION",
+    "label": "Confusion",
+    "posts": 6,
+    "pct": 0.3,
+    "lapse_stories": 2,
+    "known_outcome": 5,
+    "lapse_share": 0.4,
+    "by_source": {
+     "Reddit": 5,
+     "Play Store": 1,
+     "YouTube": 0
+    },
+    "severity": "Unclear",
+    "branch": "B3",
+    "branch_name": "Believes it is working",
+    "fixable": "High",
+    "fixable_why": "Plain-language explanations are allowed.",
+    "quotes": [
+     {
+      "id": "1hu982u",
+      "quote": "I ended up investing in 22 different mutual funds randomly. Now, I’ve realized my mistake and decided to stop all the SIPs in those random funds.",
+      "source": "Reddit post",
+      "date": "2025-01-05",
+      "link": "https://www.reddit.com/r/IndianStockMarket/comments/1hu982u/need_help_with_the_mf_portfolio_analysis/",
+      "outcome": "STOPPED",
+      "group": "Reddit",
+      "match": false
+     },
+     {
+      "id": "a40378af-0ff3-42e1-88b4-840f7825faee",
+      "quote": "Very confusing to handling mutual funds and F&O.",
+      "source": "Play Store review",
+      "date": "2026-06-22",
+      "link": "https://play.google.com/store/apps/details?id=com.nextbillion.groww&reviewId=a40378af-0ff3-42e1-88b4-840f7825faee",
+      "outcome": "UNKNOWN",
+      "group": "Play Store",
+      "match": true
+     }
+    ],
+    "raw_score": 0.1172117039586919,
+    "score": 6
+   },
+   {
+    "theme": "APP_USABILITY",
+    "label": "Hard to use the app",
+    "posts": 2,
+    "pct": 0.1,
+    "lapse_stories": 0,
+    "known_outcome": 0,
+    "lapse_share": null,
+    "by_source": {
+     "Reddit": 0,
+     "Play Store": 2,
+     "YouTube": 0
+    },
+    "severity": "Unclear",
+    "branch": "B4",
+    "branch_name": "Trusts the platform and gets help",
+    "fixable": "High",
+    "fixable_why": "Speed, layout and login problems are product fixes, with no recommendation or nudge involved.",
+    "quotes": [
+     {
+      "id": "a5686e45-ee3a-4dac-865b-f4fb40254ba5",
+      "quote": "For the past three days I have not been able to open the dashboard in Mutual Fund.",
+      "source": "Play Store review",
+      "date": "2026-10-08",
+      "link": "https://play.google.com/store/apps/details?id=com.nextbillion.groww&reviewId=a5686e45-ee3a-4dac-865b-f4fb40254ba5",
+      "outcome": "UNKNOWN",
+      "group": "Play Store",
+      "match": false
+     },
+     {
+      "id": "fbcc4660-d67b-468e-b5db-46d3424054ee",
+      "quote": "Support response poor and u have not updated exit load for all MF",
+      "source": "Play Store review",
+      "date": "2026-05-30",
+      "link": "https://play.google.com/store/apps/details?id=com.nextbillion.groww&reviewId=fbcc4660-d67b-468e-b5db-46d3424054ee",
+      "outcome": "UNKNOWN",
+      "group": "Play Store",
+      "match": false
+     }
+    ],
+    "raw_score": 0.03907056798623064,
+    "score": 2
    },
    {
     "theme": "STOP_GOAL_REACHED",
@@ -795,7 +838,7 @@
       "match": true
      }
     ],
-    "raw_score": 0.04954394693200664,
+    "raw_score": 0.048838209982788296,
     "score": 2
    },
    {
@@ -838,7 +881,7 @@
       "match": true
      }
     ],
-    "raw_score": 0.04954394693200664,
+    "raw_score": 0.048838209982788296,
     "score": 2
    }
   ],
@@ -846,15 +889,15 @@
    {
     "theme": "PLAT_SUPPORT_FAILURE",
     "label": "Support failure",
-    "posts": 55,
-    "pct": 2.8,
-    "lapse_stories": 11,
-    "known_outcome": 29,
-    "lapse_share": 0.379,
+    "posts": 41,
+    "pct": 2.1,
+    "lapse_stories": 8,
+    "known_outcome": 20,
+    "lapse_share": 0.4,
     "by_source": {
      "Reddit": 0,
-     "Play Store": 49,
-     "YouTube": 6
+     "Play Store": 38,
+     "YouTube": 3
     },
     "severity": "Medium",
     "branch": "B4",
@@ -883,7 +926,7 @@
       "match": true
      }
     ],
-    "raw_score": 0.63672,
+    "raw_score": 0.504,
     "score": 100
    },
    {
@@ -927,7 +970,7 @@
      }
     ],
     "raw_score": 0.48,
-    "score": 75
+    "score": 95
    },
    {
     "theme": "PLAT_WITHDRAW_DELAY",
@@ -969,8 +1012,8 @@
       "match": true
      }
     ],
-    "raw_score": 0.29333333333333333,
-    "score": 46
+    "raw_score": 0.3055555555555556,
+    "score": 61
    },
    {
     "theme": "PLAT_KYC_BLOCK",
@@ -1012,24 +1055,24 @@
       "match": true
      }
     ],
-    "raw_score": 0.21333333333333335,
-    "score": 34
+    "raw_score": 0.22222222222222224,
+    "score": 44
    }
   ]
  },
  "questions": {
   "Q1": {
    "question": "Why do people start a SIP, and what do they expect?",
-   "items": 600,
-   "strong": 545,
-   "pct_of_relevant": 30.5,
+   "items": 603,
+   "strong": 547,
+   "pct_of_relevant": 30.7,
    "by_source": {
-    "Reddit": 501,
+    "Reddit": 504,
     "Play Store": 5,
     "YouTube": 94
    },
    "by_source_pct": {
-    "Reddit": 36.6,
+    "Reddit": 36.8,
     "Play Store": 2.8,
     "YouTube": 22.4
    },
@@ -1051,10 +1094,10 @@
       25,
       26,
       53,
-      88,
-      91,
+      90,
+      93,
       138,
-      171
+      172
      ],
      "Play Store": [
       0,
@@ -1078,19 +1121,19 @@
      ]
     }
    },
-   "finding": "Goal wealth is the most common theme for this question: 199 of 600 items.",
+   "finding": "Goal wealth is the most common theme for this question: 200 of 603 items.",
    "numbers": [
     [
      "Items tagged",
-     600
+     603
     ],
     [
      "Share of relevant",
-     "30.5%"
+     "30.7%"
     ],
     [
      "Goal wealth items",
-     199
+     200
     ]
    ],
    "quotes": [
@@ -1128,23 +1171,23 @@
   },
   "Q2": {
    "question": "What changes in their behaviour in the months after starting?",
-   "items": 565,
-   "strong": 534,
-   "pct_of_relevant": 28.7,
+   "items": 562,
+   "strong": 531,
+   "pct_of_relevant": 28.6,
    "by_source": {
-    "Reddit": 472,
+    "Reddit": 470,
     "Play Store": 7,
-    "YouTube": 86
+    "YouTube": 85
    },
    "by_source_pct": {
-    "Reddit": 34.5,
+    "Reddit": 34.4,
     "Play Store": 3.9,
-    "YouTube": 20.5
+    "YouTube": 20.3
    },
    "chart": {
     "kind": "stack",
     "x": [
-     "Overcommitted",
+     "Ignore noise",
      "Underwhelming returns",
      "Market fall",
      "Cash crunch",
@@ -1155,10 +1198,10 @@
     ],
     "series": {
      "Reddit": [
+      18,
       22,
-      22,
-      22,
-      35,
+      23,
+      33,
       35,
       47,
       44,
@@ -1175,7 +1218,7 @@
       0
      ],
      "YouTube": [
-      1,
+      5,
       4,
       6,
       3,
@@ -1186,15 +1229,15 @@
      ]
     }
    },
-   "finding": "Long horizon belief is the most common theme for this question: 80 of 565 items.",
+   "finding": "Long horizon belief is the most common theme for this question: 80 of 562 items.",
    "numbers": [
     [
      "Items tagged",
-     565
+     562
     ],
     [
      "Share of relevant",
-     "28.7%"
+     "28.6%"
     ],
     [
      "Long horizon belief items",
@@ -1237,7 +1280,7 @@
   "Q3": {
    "question": "What leads them to pause, reduce or stop?",
    "items": 464,
-   "strong": 418,
+   "strong": 417,
    "pct_of_relevant": 23.6,
    "by_source": {
     "Reddit": 298,
@@ -1247,7 +1290,7 @@
    "by_source_pct": {
     "Reddit": 21.8,
     "Play Store": 24.7,
-    "YouTube": 29.0
+    "YouTube": 29.1
    },
    "chart": {
     "kind": "stack",
@@ -1263,7 +1306,7 @@
     ],
     "series": {
      "Reddit": [
-      6,
+      3,
       19,
       4,
       34,
@@ -1273,7 +1316,7 @@
       74
      ],
      "Play Store": [
-      9,
+      8,
       0,
       15,
       0,
@@ -1283,7 +1326,7 @@
       2
      ],
      "YouTube": [
-      3,
+      1,
       3,
       16,
       9,
@@ -1344,18 +1387,18 @@
   },
   "Q4": {
    "question": "What do they check, and how often?",
-   "items": 502,
-   "strong": 442,
-   "pct_of_relevant": 25.5,
+   "items": 500,
+   "strong": 441,
+   "pct_of_relevant": 25.4,
    "by_source": {
-    "Reddit": 343,
+    "Reddit": 341,
     "Play Store": 66,
     "YouTube": 93
    },
    "by_source_pct": {
-    "Reddit": 25.1,
+    "Reddit": 24.9,
     "Play Store": 37.1,
-    "YouTube": 22.1
+    "YouTube": 22.2
    },
    "chart": {
     "kind": "stack",
@@ -1377,7 +1420,7 @@
       8,
       7,
       14,
-      123,
+      121,
       136
      ],
      "Play Store": [
@@ -1402,15 +1445,15 @@
      ]
     }
    },
-   "finding": "XIRR or returns is the most common theme for this question: 185 of 502 items.",
+   "finding": "XIRR or returns is the most common theme for this question: 185 of 500 items.",
    "numbers": [
     [
      "Items tagged",
-     502
+     500
     ],
     [
      "Share of relevant",
-     "25.5%"
+     "25.4%"
     ],
     [
      "XIRR or returns items",
@@ -1452,18 +1495,18 @@
   },
   "Q5": {
    "question": "What confuses or worries them?",
-   "items": 979,
-   "strong": 828,
+   "items": 978,
+   "strong": 827,
    "pct_of_relevant": 49.8,
    "by_source": {
     "Reddit": 668,
     "Play Store": 101,
-    "YouTube": 210
+    "YouTube": 209
    },
    "by_source_pct": {
     "Reddit": 48.8,
     "Play Store": 56.7,
-    "YouTube": 50.0
+    "YouTube": 49.9
    },
    "chart": {
     "kind": "stack",
@@ -1483,8 +1526,8 @@
       22,
       52,
       94,
-      118,
-      255
+      117,
+      257
      ],
      "Play Store": [
       0,
@@ -1502,15 +1545,15 @@
       13,
       28,
       19,
-      42
+      41
      ]
     }
    },
-   "finding": "Fund choice is the most common theme for this question: 303 of 979 items.",
+   "finding": "Fund choice is the most common theme for this question: 304 of 978 items.",
    "numbers": [
     [
      "Items tagged",
-     979
+     978
     ],
     [
      "Share of relevant",
@@ -1518,7 +1561,7 @@
     ],
     [
      "Fund choice items",
-     303
+     304
     ]
    ],
    "quotes": [
@@ -1556,18 +1599,18 @@
   },
   "Q6": {
    "question": "What do they do outside the app when unsure?",
-   "items": 273,
-   "strong": 244,
-   "pct_of_relevant": 13.9,
+   "items": 275,
+   "strong": 245,
+   "pct_of_relevant": 14.0,
    "by_source": {
     "Reddit": 223,
-    "Play Store": 13,
-    "YouTube": 37
+    "Play Store": 14,
+    "YouTube": 38
    },
    "by_source_pct": {
     "Reddit": 16.3,
-    "Play Store": 7.3,
-    "YouTube": 8.8
+    "Play Store": 7.9,
+    "YouTube": 9.1
    },
    "chart": {
     "kind": "stack",
@@ -1606,15 +1649,15 @@
      ]
     }
    },
-   "finding": "YouTube or finfluencer is the most common theme for this question: 73 of 273 items.",
+   "finding": "YouTube or finfluencer is the most common theme for this question: 73 of 275 items.",
    "numbers": [
     [
      "Items tagged",
-     273
+     275
     ],
     [
      "Share of relevant",
-     "13.9%"
+     "14.0%"
     ],
     [
      "YouTube or finfluencer items",
@@ -1656,16 +1699,16 @@
   },
   "Q7": {
    "question": "What separates those who continue from those who drop off?",
-   "items": 149,
-   "strong": 119,
+   "items": 150,
+   "strong": 120,
    "pct_of_relevant": 7.6,
    "by_source": {
-    "Reddit": 110,
+    "Reddit": 111,
     "Play Store": 0,
     "YouTube": 39
    },
    "by_source_pct": {
-    "Reddit": 8.0,
+    "Reddit": 8.1,
     "Play Store": 0.0,
     "YouTube": 9.3
    },
@@ -1680,7 +1723,7 @@
     ],
     "series": {
      "Items": [
-      122,
+      123,
       12,
       7,
       4,
@@ -1688,11 +1731,11 @@
      ]
     }
    },
-   "finding": "Only 149 items speak to why people continue or drop off, so this question is thin.",
+   "finding": "Only 150 items speak to why people continue or drop off, so this question is thin.",
    "numbers": [
     [
      "Items tagged Q7",
-     149
+     150
     ],
     [
      "Share of relevant",
@@ -1700,7 +1743,7 @@
     ],
     [
      "Still continuing",
-     122
+     123
     ]
    ],
    "quotes": [
@@ -1738,18 +1781,18 @@
   },
   "Q8": {
    "question": "How do patterns differ across segments?",
-   "items": 1048,
-   "strong": 923,
-   "pct_of_relevant": 53.3,
+   "items": 1052,
+   "strong": 925,
+   "pct_of_relevant": 53.5,
    "by_source": {
-    "Reddit": 904,
+    "Reddit": 907,
     "Play Store": 12,
-    "YouTube": 132
+    "YouTube": 133
    },
    "by_source_pct": {
-    "Reddit": 66.0,
+    "Reddit": 66.3,
     "Play Store": 6.7,
-    "YouTube": 31.4
+    "YouTube": 31.7
    },
    "chart": {
     "kind": "bar",
@@ -1762,19 +1805,19 @@
     ],
     "series": {
      "Stated (% of Q8 items)": [
-      81.5,
-      59.3,
-      78.7,
-      84.8,
-      95.0
+      81.4,
+      59.1,
+      78.6,
+      84.7,
+      94.9
      ]
     }
    },
-   "finding": "Among the 1048 items tagged for segments, age is stated in 59% and income in 82%.",
+   "finding": "Among the 1052 items tagged for segments, age is stated in 59% and income in 81%.",
    "numbers": [
     [
      "Items tagged Q8",
-     1048
+     1052
     ],
     [
      "Age stated",
@@ -1782,7 +1825,7 @@
     ],
     [
      "Income stated",
-     "82%"
+     "81%"
     ]
    ],
    "quotes": [
@@ -1820,18 +1863,18 @@
   },
   "Q9": {
    "question": "What unmet needs come up again and again?",
-   "items": 541,
+   "items": 542,
    "strong": 411,
-   "pct_of_relevant": 27.5,
+   "pct_of_relevant": 27.6,
    "by_source": {
-    "Reddit": 272,
-    "Play Store": 120,
-    "YouTube": 149
+    "Reddit": 271,
+    "Play Store": 121,
+    "YouTube": 150
    },
    "by_source_pct": {
-    "Reddit": 19.9,
-    "Play Store": 67.4,
-    "YouTube": 35.5
+    "Reddit": 19.8,
+    "Play Store": 68.0,
+    "YouTube": 35.8
    },
    "chart": {
     "kind": "stack",
@@ -1851,7 +1894,7 @@
       16,
       3,
       14,
-      43,
+      42,
       16,
       40,
       5
@@ -1873,20 +1916,20 @@
       23,
       7,
       38,
-      16,
+      17,
       4
      ]
     }
    },
-   "finding": "Feature missing is the most common theme for this question: 61 of 541 items.",
+   "finding": "Feature missing is the most common theme for this question: 61 of 542 items.",
    "numbers": [
     [
      "Items tagged",
-     541
+     542
     ],
     [
      "Share of relevant",
-     "27.5%"
+     "27.6%"
     ],
     [
      "Feature missing items",
@@ -1937,22 +1980,22 @@
    },
    "B2": {
     "name": "Can afford to keep paying, and can adjust",
-    "posts": 478,
+    "posts": 477,
     "pct": 24.3
    },
    "B3": {
     "name": "Believes it is working",
-    "posts": 517,
-    "pct": 26.3
+    "posts": 507,
+    "pct": 25.8
    },
    "B4": {
     "name": "Trusts the platform and gets help",
-    "posts": 146,
-    "pct": 7.4
+    "posts": 128,
+    "pct": 6.5
    },
    "B5": {
     "name": "Has no pull to somewhere else or to forgetting",
-    "posts": 537,
+    "posts": 536,
     "pct": 27.3
    }
   },
@@ -1965,18 +2008,18 @@
     },
     "B2": {
      "name": "Can afford to keep paying, and can adjust",
-     "posts": 334,
-     "pct": 24.4
+     "posts": 333,
+     "pct": 24.3
     },
     "B3": {
      "name": "Believes it is working",
-     "posts": 350,
-     "pct": 25.6
+     "posts": 344,
+     "pct": 25.1
     },
     "B4": {
      "name": "Trusts the platform and gets help",
-     "posts": 37,
-     "pct": 2.7
+     "posts": 33,
+     "pct": 2.4
     },
     "B5": {
      "name": "Has no pull to somewhere else or to forgetting",
@@ -2002,8 +2045,8 @@
     },
     "B4": {
      "name": "Trusts the platform and gets help",
-     "posts": 84,
-     "pct": 47.2
+     "posts": 76,
+     "pct": 42.7
     },
     "B5": {
      "name": "Has no pull to somewhere else or to forgetting",
@@ -2020,44 +2063,44 @@
     "B2": {
      "name": "Can afford to keep paying, and can adjust",
      "posts": 111,
-     "pct": 26.4
+     "pct": 26.5
     },
     "B3": {
      "name": "Believes it is working",
-     "posts": 112,
-     "pct": 26.7
+     "posts": 108,
+     "pct": 25.8
     },
     "B4": {
      "name": "Trusts the platform and gets help",
-     "posts": 25,
-     "pct": 6.0
+     "posts": 19,
+     "pct": 4.5
     },
     "B5": {
      "name": "Has no pull to somewhere else or to forgetting",
-     "posts": 73,
-     "pct": 17.4
+     "posts": 72,
+     "pct": 17.2
     }
    }
   },
   "reason_split": {
    "all": {
-    "voluntary": 491,
+    "voluntary": 479,
     "involuntary": 86,
     "mixed": 43
    },
    "by_source": {
     "Reddit": {
-     "voluntary": 379,
+     "voluntary": 372,
      "involuntary": 17,
      "mixed": 2
     },
     "Play Store": {
-     "voluntary": 27,
+     "voluntary": 26,
      "involuntary": 44,
      "mixed": 27
     },
     "YouTube": {
-     "voluntary": 85,
+     "voluntary": 81,
      "involuntary": 25,
      "mixed": 14
     }
@@ -2069,9 +2112,9 @@
     "label": "Round 1 (conservative codebook)",
     "relevant": 1375,
     "split": {
-     "voluntary": 341,
-     "involuntary": 11,
-     "mixed": 3
+     "voluntary": 328,
+     "involuntary": 13,
+     "mixed": 1
     },
     "branches": {
      "B1": {
@@ -2086,13 +2129,13 @@
      },
      "B3": {
       "name": "Believes it is working",
-      "posts": 328,
-      "pct": 23.9
+      "posts": 317,
+      "pct": 23.1
      },
      "B4": {
       "name": "Trusts the platform and gets help",
-      "posts": 53,
-      "pct": 3.9
+      "posts": 34,
+      "pct": 2.5
      },
      "B5": {
       "name": "Has no pull to somewhere else or to forgetting",
@@ -2105,7 +2148,7 @@
     "label": "Round 2 (recall-oriented codebook)",
     "relevant": 1369,
     "split": {
-     "voluntary": 379,
+     "voluntary": 372,
      "involuntary": 17,
      "mixed": 2
     },
@@ -2122,13 +2165,13 @@
      },
      "B3": {
       "name": "Believes it is working",
-      "posts": 350,
-      "pct": 25.6
+      "posts": 344,
+      "pct": 25.1
      },
      "B4": {
       "name": "Trusts the platform and gets help",
-      "posts": 37,
-      "pct": 2.7
+      "posts": 33,
+      "pct": 2.4
      },
      "B5": {
       "name": "Has no pull to somewhere else or to forgetting",
@@ -2175,7 +2218,8 @@
     "Trust platform",
     "Support failure",
     "Withdraw delay",
-    "Human help"
+    "Human help",
+    "Hard to use the app"
    ],
    "B5": [
     "Better alternative",
@@ -2192,7 +2236,7 @@
    "Income": [
     {
      "group": "STABLE_SALARY",
-     "items": 898,
+     "items": 897,
      "lapse_stories": 73,
      "lapse_pct": 8.1,
      "low_confidence": false,
@@ -2224,9 +2268,9 @@
     },
     {
      "group": "Not stated",
-     "items": 863,
+     "items": 862,
      "lapse_stories": 135,
-     "lapse_pct": 15.6,
+     "lapse_pct": 15.7,
      "low_confidence": false,
      "top_reasons": "Better alternative (26), Debit or operations failure (23)"
     }
@@ -2266,7 +2310,7 @@
     },
     {
      "group": "Not stated",
-     "items": 1182,
+     "items": 1180,
      "lapse_stories": 156,
      "lapse_pct": 13.2,
      "low_confidence": false,
@@ -2276,7 +2320,7 @@
    "Money source": [
     {
      "group": "salary",
-     "items": 868,
+     "items": 867,
      "lapse_stories": 68,
      "lapse_pct": 7.8,
      "low_confidence": false,
@@ -2312,7 +2356,7 @@
      "lapse_stories": 1,
      "lapse_pct": 7.7,
      "low_confidence": true,
-     "top_reasons": "Confusion (1)"
+     "top_reasons": "none stated"
     },
     {
      "group": "business",
@@ -2324,7 +2368,7 @@
     },
     {
      "group": "Not stated",
-     "items": 887,
+     "items": 886,
      "lapse_stories": 133,
      "lapse_pct": 15.0,
      "low_confidence": false,
@@ -2342,7 +2386,7 @@
     },
     {
      "group": "family",
-     "items": 192,
+     "items": 191,
      "lapse_stories": 10,
      "lapse_pct": 5.2,
      "low_confidence": true,
@@ -2370,7 +2414,7 @@
      "lapse_stories": 4,
      "lapse_pct": 19.0,
      "low_confidence": true,
-     "top_reasons": "Better alternative (2), Confusion (1)"
+     "top_reasons": "Better alternative (2), Passive drift (1)"
     },
     {
      "group": "community",
@@ -2382,9 +2426,9 @@
     },
     {
      "group": "Not stated",
-     "items": 694,
+     "items": 693,
      "lapse_stories": 103,
-     "lapse_pct": 14.8,
+     "lapse_pct": 14.9,
      "low_confidence": false,
      "top_reasons": "Debit or operations failure (23), Cash crunch (13)"
     }
@@ -2392,7 +2436,7 @@
    "Experience": [
     {
      "group": "SOME_EXPERIENCE",
-     "items": 634,
+     "items": 633,
      "lapse_stories": 99,
      "lapse_pct": 15.6,
      "low_confidence": false,
@@ -2400,7 +2444,7 @@
     },
     {
      "group": "FIRST_TIMER",
-     "items": 559,
+     "items": 558,
      "lapse_stories": 28,
      "lapse_pct": 5.0,
      "low_confidence": false,
@@ -2427,7 +2471,7 @@
   "by_source": [
    {
     "group": "Reddit",
-    "items": 1369,
+    "items": 1368,
     "lapse_stories": 137,
     "lapse_pct": 10.0,
     "low_confidence": false,
@@ -2435,7 +2479,7 @@
    },
    {
     "group": "YouTube",
-    "items": 420,
+    "items": 419,
     "lapse_stories": 70,
     "lapse_pct": 16.7,
     "low_confidence": false,
@@ -2458,7 +2502,7 @@
     "All": 56.1
    },
    "Age": {
-    "Reddit": 53.5,
+    "Reddit": 53.6,
     "Play Store": 0.0,
     "YouTube": 12.4,
     "All": 39.9
@@ -2478,7 +2522,7 @@
    "Experience": {
     "Reddit": 93.5,
     "Play Store": 17.4,
-    "YouTube": 65.5,
+    "YouTube": 65.4,
     "All": 80.6
    }
   },
@@ -2501,6 +2545,12 @@
     "codebook": "CODEBOOK v2",
     "change": "Recall-oriented: tag whenever the text gives real evidence, even in passing; relevance relaxed for rich personal context. Re-coded the Reddit items round 1 found relevant, plus Play Store (196) and YouTube (535).",
     "problem": "Over-tagged Q9, Q2, Q4 and Q5; the \"needs human help\" tag fired on every Reddit post because posting is itself asking for advice."
+   },
+   {
+    "round": "Round 2.1",
+    "codebook": "CODEBOOK v2.1 (rules applied after coding; the items were not re-coded)",
+    "change": "Clarifies three tags after a 20-post read of each: lost trust only when trust in the platform or fund house is stated; confusion only when confusion is the stated reason; support failure only when contact with support is described. Adds a derived \"hard to use the app\" bucket and sub-themes for the vague buckets.",
+    "problem": "Applied as text rules in pipeline/rules.py, so the original round 2 coding is unchanged. A re-run with the v2.1 wording would be the cleaner fix."
    }
   ],
   "agreement": {
@@ -2569,6 +2619,31 @@
     "what": "\"Needs human help\" tags removed from YouTube items",
     "n": 79,
     "fix": "Dropped for the same reason: commenters are asking the video's creator."
+   },
+   {
+    "what": "\"Support failure\" tag removed where the text did not support it",
+    "n": 14,
+    "fix": "Rule from the 20-post review; see the tag review log below."
+   },
+   {
+    "what": "\"Confusion\" tag removed where the text did not support it",
+    "n": 10,
+    "fix": "Rule from the 20-post review; see the tag review log below."
+   },
+   {
+    "what": "\"Lost trust\" tag removed where the text did not support it",
+    "n": 12,
+    "fix": "Rule from the 20-post review; see the tag review log below."
+   },
+   {
+    "what": "\"Hard to use the app\" tag added by rule",
+    "n": 2,
+    "fix": "Derived from the Play Store top-issues themes (crash, lag, login loops, confusing layout). The first version matched market \"crashes\" and tagged 31 items; after reading the quotes it was narrowed to app context and now tags only the real complaints."
+   },
+   {
+    "what": "Platform staff replies removed",
+    "n": 0,
+    "fix": "None found among the coded items; the rule stays in place for new data."
    }
   ],
   "human_corrections": [
@@ -2629,6 +2704,7 @@
   ]
  },
  "themes": {
+  "APP_USABILITY": "Hard to use the app",
   "BANK_OR_EMPLOYER_PUSH": "Bank or employer push",
   "CHECK_AFTER_MARKET_NEWS": "After market news",
   "CHECK_DAILY": "Daily",
@@ -2772,5 +2848,1345 @@
   "WORRY_NOT_KNOWING_IF_ON_TRACK": "Not knowing if on track",
   "WORRY_TAX": "Tax",
   "WORRY_TRUST_PLATFORM": "Trust platform"
+ },
+ "subthemes": {
+  "APP_USABILITY": {
+   "parent": "APP_USABILITY",
+   "label": "Hard to use the app",
+   "items": 2,
+   "by_source": {
+    "Reddit": 0,
+    "Play Store": 2,
+    "YouTube": 0
+   },
+   "subs": [
+    {
+     "label": "Crashes, lag or freezes",
+     "items": 1,
+     "by_source": {
+      "Reddit": 0,
+      "Play Store": 1,
+      "YouTube": 0
+     },
+     "quote": {
+      "id": "fbcc4660-d67b-468e-b5db-46d3424054ee",
+      "quote": "Support response poor and u have not updated exit load for all MF",
+      "source": "Play Store review",
+      "date": "2026-05-30",
+      "link": "https://play.google.com/store/apps/details?id=com.nextbillion.groww&reviewId=fbcc4660-d67b-468e-b5db-46d3424054ee",
+      "match": false
+     }
+    },
+    {
+     "label": "Login, OTP or update loops",
+     "items": 1,
+     "by_source": {
+      "Reddit": 0,
+      "Play Store": 1,
+      "YouTube": 0
+     },
+     "quote": {
+      "id": "fbcc4660-d67b-468e-b5db-46d3424054ee",
+      "quote": "Support response poor and u have not updated exit load for all MF",
+      "source": "Play Store review",
+      "date": "2026-05-30",
+      "link": "https://play.google.com/store/apps/details?id=com.nextbillion.groww&reviewId=fbcc4660-d67b-468e-b5db-46d3424054ee",
+      "match": true
+     }
+    },
+    {
+     "label": "Error message or blank screen",
+     "items": 1,
+     "by_source": {
+      "Reddit": 0,
+      "Play Store": 1,
+      "YouTube": 0
+     },
+     "quote": {
+      "id": "a5686e45-ee3a-4dac-865b-f4fb40254ba5",
+      "quote": "For the past three days I have not been able to open the dashboard in Mutual Fund.",
+      "source": "Play Store review",
+      "date": "2026-10-08",
+      "link": "https://play.google.com/store/apps/details?id=com.nextbillion.groww&reviewId=a5686e45-ee3a-4dac-865b-f4fb40254ba5",
+      "match": false
+     }
+    },
+    {
+     "label": "Confusing layout or redesign",
+     "items": 0,
+     "by_source": {
+      "Reddit": 0,
+      "Play Store": 0,
+      "YouTube": 0
+     },
+     "quote": null
+    },
+    {
+     "label": "Cannot find a feature or screen",
+     "items": 0,
+     "by_source": {
+      "Reddit": 0,
+      "Play Store": 0,
+      "YouTube": 0
+     },
+     "quote": null
+    },
+    {
+     "label": "Not specified",
+     "items": 0,
+     "by_source": {
+      "Reddit": 0,
+      "Play Store": 0,
+      "YouTube": 0
+     },
+     "quote": null
+    }
+   ]
+  },
+  "WORRY_FUND_CHOICE": {
+   "parent": "WORRY_FUND_CHOICE",
+   "label": "Fund choice",
+   "items": 413,
+   "by_source": {
+    "Reddit": 351,
+    "Play Store": 7,
+    "YouTube": 55
+   },
+   "subs": [
+    {
+     "label": "Which category, or how to split",
+     "items": 250,
+     "by_source": {
+      "Reddit": 219,
+      "Play Store": 1,
+      "YouTube": 30
+     },
+     "quote": {
+      "id": "112xwd0",
+      "quote": "Now at the 3 year mark, my overall portfolio is 5% XIRR, and 3 of the above funds have changed rating from 5->3/2.",
+      "source": "Reddit post",
+      "date": "2023-02-15",
+      "link": "https://www.reddit.com/r/IndiaInvestments/comments/112xwd0/advice_needed_questions_for_people_with_long_term/",
+      "match": true
+     }
+    },
+    {
+     "label": "Index versus active funds",
+     "items": 120,
+     "by_source": {
+      "Reddit": 111,
+      "Play Store": 1,
+      "YouTube": 8
+     },
+     "quote": {
+      "id": "1862g8y",
+      "quote": "Earlier have invested in axis bluechip and uti nifty 50 index fund had to withdraw money to close loan.",
+      "source": "Reddit post",
+      "date": "2023-11-28",
+      "link": "https://www.reddit.com/r/personalfinanceindia/comments/1862g8y/is_this_allocation_of_sip_fine/",
+      "match": true
+     }
+    },
+    {
+     "label": "Direct versus regular plan",
+     "items": 103,
+     "by_source": {
+      "Reddit": 89,
+      "Play Store": 5,
+      "YouTube": 9
+     },
+     "quote": {
+      "id": "16y4mam",
+      "quote": "I'm a bit confused whether I should move to direct mf now",
+      "source": "Reddit post",
+      "date": "2023-10-02",
+      "link": "https://www.reddit.com/r/IndianStockMarket/comments/16y4mam/suggestion_moving_from_regular_to_direct_and/",
+      "match": true
+     }
+    },
+    {
+     "label": "Which specific fund",
+     "items": 91,
+     "by_source": {
+      "Reddit": 78,
+      "Play Store": 0,
+      "YouTube": 13
+     },
+     "quote": {
+      "id": "16bam3q",
+      "quote": "I incline towards MFs because there I have an option to pick reliable/safe options and don't keep on checking on them again and again.",
+      "source": "Reddit post",
+      "date": "2023-09-06",
+      "link": "https://www.reddit.com/r/IndianStockMarket/comments/16bam3q/should_i_invest_in_the_green_energy_smallcase_or/",
+      "match": true
+     }
+    },
+    {
+     "label": "Too many funds or overlap",
+     "items": 56,
+     "by_source": {
+      "Reddit": 50,
+      "Play Store": 0,
+      "YouTube": 6
+     },
+     "quote": {
+      "id": "18qq9uq",
+      "quote": "Stopped SIP as realised sensex index plan has significant overlap",
+      "source": "Reddit post",
+      "date": "2023-12-25",
+      "link": "https://www.reddit.com/r/personalfinanceindia/comments/18qq9uq/suggestions_for_my_overall_portfolio/",
+      "match": true
+     }
+    },
+    {
+     "label": "Doubts about past performance",
+     "items": 16,
+     "by_source": {
+      "Reddit": 14,
+      "Play Store": 1,
+      "YouTube": 1
+     },
+     "quote": {
+      "id": "18ocksw",
+      "quote": "I have refreshed my research on the same and found that it has indeed underperformed as compared to other small cap funds",
+      "source": "Reddit post",
+      "date": "2023-12-22",
+      "link": "https://www.reddit.com/r/IndianStockMarket/comments/18ocksw/seeking_small_cap_mf_suggestion/",
+      "match": true
+     }
+    },
+    {
+     "label": "Not specified",
+     "items": 80,
+     "by_source": {
+      "Reddit": 64,
+      "Play Store": 0,
+      "YouTube": 16
+     },
+     "quote": {
+      "id": "1031fil",
+      "quote": "I am already investing (since the pause) in Navi US Total Market fund.",
+      "source": "Reddit post",
+      "date": "2023-01-04",
+      "link": "https://www.reddit.com/r/IndiaInvestments/comments/1031fil/motilal_oswal_presented_bill_for_my_sp500_sip/",
+      "match": false
+     }
+    }
+   ]
+  },
+  "STOP_BETTER_ALTERNATIVE": {
+   "parent": "STOP_BETTER_ALTERNATIVE",
+   "label": "Better alternative",
+   "items": 111,
+   "by_source": {
+    "Reddit": 88,
+    "Play Store": 8,
+    "YouTube": 15
+   },
+   "subs": [
+    {
+     "label": "Direct stocks",
+     "items": 32,
+     "by_source": {
+      "Reddit": 27,
+      "Play Store": 2,
+      "YouTube": 3
+     },
+     "quote": {
+      "id": "1n76rxd",
+      "quote": "then I started a SIP in 2 funds and stopped buying stocks altogether in 2025 start i sold my mutual funds",
+      "source": "Reddit post",
+      "date": "2025-09-03",
+      "link": "https://www.reddit.com/r/IndianStockMarket/comments/1n76rxd/need_advice_please_read_the_whole_thing/",
+      "match": true
+     }
+    },
+    {
+     "label": "FD, debt, gold or PPF",
+     "items": 32,
+     "by_source": {
+      "Reddit": 27,
+      "Play Store": 0,
+      "YouTube": 5
+     },
+     "quote": {
+      "id": "1ue5kc1",
+      "quote": "It makes me want to stop saving into stocks completely and just lock my cash safely in a bank FD where it can not hurt me.",
+      "source": "Reddit post",
+      "date": "2026-06-24",
+      "link": "https://www.reddit.com/r/IndianStockMarket/comments/1ue5kc1/is_it_just_me_or_is_the_market_stress_making_you/",
+      "match": true
+     }
+    },
+    {
+     "label": "Index fund or ETF",
+     "items": 25,
+     "by_source": {
+      "Reddit": 24,
+      "Play Store": 0,
+      "YouTube": 1
+     },
+     "quote": {
+      "id": "18qq9uq",
+      "quote": "Stopped SIP as realised sensex index plan has significant overlap",
+      "source": "Reddit post",
+      "date": "2023-12-25",
+      "link": "https://www.reddit.com/r/personalfinanceindia/comments/18qq9uq/suggestions_for_my_overall_portfolio/",
+      "match": true
+     }
+    },
+    {
+     "label": "Cheaper or direct plan",
+     "items": 18,
+     "by_source": {
+      "Reddit": 17,
+      "Play Store": 0,
+      "YouTube": 1
+     },
+     "quote": {
+      "id": "1aj9xm5",
+      "quote": "recently, I learnt that NJ Wealth is a distributor and commission components are included when we buy regular plans from them.",
+      "source": "Reddit post",
+      "date": "2024-02-05",
+      "link": "https://www.reddit.com/r/personalfinanceindia/comments/1aj9xm5/need_suggestions_on_whats_the_best_way_to_switch/",
+      "match": true
+     }
+    },
+    {
+     "label": "Another platform",
+     "items": 14,
+     "by_source": {
+      "Reddit": 9,
+      "Play Store": 4,
+      "YouTube": 1
+     },
+     "quote": {
+      "id": "1fba9t9",
+      "quote": "both are not showing up in Upstox.",
+      "source": "Reddit post",
+      "date": "2024-09-07",
+      "link": "https://www.reddit.com/r/IndianStockMarket/comments/1fba9t9/step_up_sip_and_systematic_withdrawal_plan_swp_in/",
+      "match": true
+     }
+    },
+    {
+     "label": "Property or other assets",
+     "items": 10,
+     "by_source": {
+      "Reddit": 9,
+      "Play Store": 0,
+      "YouTube": 1
+     },
+     "quote": {
+      "id": "18e93xu",
+      "quote": "seeing my friends invest in land (plots) has sparked a fear of missing out (FOMO)",
+      "source": "Reddit post",
+      "date": "2023-12-09",
+      "link": "https://www.reddit.com/r/personalfinanceindia/comments/18e93xu/should_i_redeem_some_mutual_funds_to_start/",
+      "match": true
+     }
+    },
+    {
+     "label": "Lump sum instead of a SIP",
+     "items": 5,
+     "by_source": {
+      "Reddit": 4,
+      "Play Store": 0,
+      "YouTube": 1
+     },
+     "quote": {
+      "id": "1kxa3tx",
+      "quote": "What if I won't get job to invest in SIPs every month?",
+      "source": "Reddit post",
+      "date": "2025-05-28",
+      "link": "https://www.reddit.com/r/IndiaInvestments/comments/1kxa3tx/are_mutual_funds_good_option_for_me_to_invest_if/",
+      "match": false
+     }
+    },
+    {
+     "label": "Not specified",
+     "items": 30,
+     "by_source": {
+      "Reddit": 21,
+      "Play Store": 3,
+      "YouTube": 6
+     },
+     "quote": {
+      "id": "18rsgkd",
+      "quote": "my question is should I stop doing sips and start investing in IPOs",
+      "source": "Reddit post",
+      "date": "2023-12-27",
+      "link": "https://www.reddit.com/r/personalfinanceindia/comments/18rsgkd/how_do_i_manage_finance/",
+      "match": false
+     }
+    }
+   ]
+  },
+  "PLAT_NO_CONTROL": {
+   "parent": "PLAT_NO_CONTROL",
+   "label": "No control",
+   "items": 55,
+   "by_source": {
+    "Reddit": 5,
+    "Play Store": 23,
+    "YouTube": 27
+   },
+   "subs": [
+    {
+     "label": "Cannot cancel or stop",
+     "items": 19,
+     "by_source": {
+      "Reddit": 2,
+      "Play Store": 3,
+      "YouTube": 14
+     },
+     "quote": {
+      "id": "1eyk812",
+      "quote": "Due to change of plans I have cancelled my SIP.",
+      "source": "Reddit post",
+      "date": "2024-08-22",
+      "link": "https://www.reddit.com/r/IndianStockMarket/comments/1eyk812/please_clarify_my_doubt_on_sip_cancellation/",
+      "match": true
+     }
+    },
+    {
+     "label": "Cannot pause or skip",
+     "items": 16,
+     "by_source": {
+      "Reddit": 1,
+      "Play Store": 2,
+      "YouTube": 13
+     },
+     "quote": {
+      "id": "66aca4e9-e96a-4e94-ada8-dd661f1f3d02",
+      "quote": "Currently you can skip 1 installment or cancel completely but I just want to pause for a few months.",
+      "source": "Play Store review",
+      "date": "2026-08-26",
+      "link": "https://play.google.com/store/apps/details?id=com.nextbillion.groww&reviewId=66aca4e9-e96a-4e94-ada8-dd661f1f3d02",
+      "match": true
+     }
+    },
+    {
+     "label": "Cannot change date or amount",
+     "items": 13,
+     "by_source": {
+      "Reddit": 4,
+      "Play Store": 4,
+      "YouTube": 5
+     },
+     "quote": {
+      "id": "1b25b5c2-2c11-450e-8d91-95d5f76dac65",
+      "quote": "Unable to change Autopay mandate from eNACH to UPI.",
+      "source": "Play Store review",
+      "date": "2026-10-22",
+      "link": "https://play.google.com/store/apps/details?id=com.nextbillion.groww&reviewId=1b25b5c2-2c11-450e-8d91-95d5f76dac65",
+      "match": true
+     }
+    },
+    {
+     "label": "Forced or automatic switch or plan change",
+     "items": 13,
+     "by_source": {
+      "Reddit": 1,
+      "Play Store": 8,
+      "YouTube": 4
+     },
+     "quote": {
+      "id": "30e45ec8-0433-4d46-a478-7739f4d93e27",
+      "quote": "i mistakenly chose the MF prime plan, now I can't revert back to Classic plan.",
+      "source": "Play Store review",
+      "date": "2026-08-21",
+      "link": "https://play.google.com/store/apps/details?id=com.nextbillion.groww&reviewId=30e45ec8-0433-4d46-a478-7739f4d93e27",
+      "match": true
+     }
+    },
+    {
+     "label": "Not specified",
+     "items": 11,
+     "by_source": {
+      "Reddit": 1,
+      "Play Store": 8,
+      "YouTube": 2
+     },
+     "quote": {
+      "id": "0c2c71bd-b8ef-4ef4-8f0e-6b42b6aafe6a",
+      "quote": "also bought sip fund instead of one time , no confirmation or conversion option here also",
+      "source": "Play Store review",
+      "date": "2026-02-18",
+      "link": "https://play.google.com/store/apps/details?id=com.nextbillion.groww&reviewId=0c2c71bd-b8ef-4ef4-8f0e-6b42b6aafe6a",
+      "match": false
+     }
+    }
+   ]
+  },
+  "PLAT_SUPPORT_FAILURE": {
+   "parent": "PLAT_SUPPORT_FAILURE",
+   "label": "Support failure",
+   "items": 41,
+   "by_source": {
+    "Reddit": 0,
+    "Play Store": 38,
+    "YouTube": 3
+   },
+   "subs": [
+    {
+     "label": "Ticket raised, not resolved",
+     "items": 15,
+     "by_source": {
+      "Reddit": 0,
+      "Play Store": 15,
+      "YouTube": 0
+     },
+     "quote": {
+      "id": "fc467c0a-2912-448b-af61-ea670103cbc4",
+      "quote": "I am writing to formally raise a complaint regarding my inability to withdraw my funds from my Groww account.",
+      "source": "Play Store review",
+      "date": "2026-10-11",
+      "link": "https://play.google.com/store/apps/details?id=com.nextbillion.groww&reviewId=fc467c0a-2912-448b-af61-ea670103cbc4",
+      "match": true
+     }
+    },
+    {
+     "label": "No response or very slow",
+     "items": 14,
+     "by_source": {
+      "Reddit": 0,
+      "Play Store": 13,
+      "YouTube": 1
+     },
+     "quote": {
+      "id": "3b2570a0-9cfa-4257-b478-dcf9f4065a00",
+      "quote": "Keeping customers waiting for their own money without a clear explanation is unacceptable.",
+      "source": "Play Store review",
+      "date": "2026-10-14",
+      "link": "https://play.google.com/store/apps/details?id=com.nextbillion.groww&reviewId=3b2570a0-9cfa-4257-b478-dcf9f4065a00",
+      "match": true
+     }
+    },
+    {
+     "label": "Cannot reach support by call or chat",
+     "items": 10,
+     "by_source": {
+      "Reddit": 0,
+      "Play Store": 9,
+      "YouTube": 1
+     },
+     "quote": {
+      "id": "9ad67997-e927-47a4-8749-367331c63130",
+      "quote": "they don't pick up the phone or cancel the sip has also taken penalty",
+      "source": "Play Store review",
+      "date": "2026-08-03",
+      "link": "https://play.google.com/store/apps/details?id=com.nextbillion.groww&reviewId=9ad67997-e927-47a4-8749-367331c63130",
+      "match": true
+     }
+    },
+    {
+     "label": "Scripted or unhelpful answers",
+     "items": 4,
+     "by_source": {
+      "Reddit": 0,
+      "Play Store": 4,
+      "YouTube": 0
+     },
+     "quote": {
+      "id": "54937f05-0997-4ce6-9df6-a27bbfab9093",
+      "quote": "Importing funds is useless if invested values are wrong.",
+      "source": "Play Store review",
+      "date": "2026-09-19",
+      "link": "https://play.google.com/store/apps/details?id=com.nextbillion.groww&reviewId=54937f05-0997-4ce6-9df6-a27bbfab9093",
+      "match": true
+     }
+    },
+    {
+     "label": "Not specified",
+     "items": 11,
+     "by_source": {
+      "Reddit": 0,
+      "Play Store": 10,
+      "YouTube": 1
+     },
+     "quote": {
+      "id": "0931366b-c95f-4dc4-a720-17280293f85d",
+      "quote": "3 sal se sip kar rha tha",
+      "source": "Play Store review",
+      "date": "2026-10-10",
+      "link": "https://play.google.com/store/apps/details?id=com.nextbillion.groww&reviewId=0931366b-c95f-4dc4-a720-17280293f85d",
+      "match": false
+     }
+    }
+   ]
+  },
+  "STOP_CASH_CRUNCH": {
+   "parent": "STOP_CASH_CRUNCH",
+   "label": "Cash crunch",
+   "items": 122,
+   "by_source": {
+    "Reddit": 102,
+    "Play Store": 3,
+    "YouTube": 17
+   },
+   "subs": [
+    {
+     "label": "Rising expenses or low savings",
+     "items": 85,
+     "by_source": {
+      "Reddit": 83,
+      "Play Store": 0,
+      "YouTube": 2
+     },
+     "quote": {
+      "id": "1e1bkwf",
+      "quote": "I have decided to stop the SIP as I'm changing banks as well as the have my own expenses at university.",
+      "source": "Reddit post",
+      "date": "2024-07-12",
+      "link": "https://www.reddit.com/r/personalfinanceindia/comments/1e1bkwf/starting_out_early/",
+      "match": true
+     }
+    },
+    {
+     "label": "A big planned spend",
+     "items": 70,
+     "by_source": {
+      "Reddit": 68,
+      "Play Store": 1,
+      "YouTube": 1
+     },
+     "quote": {
+      "id": "140da40",
+      "quote": "Skipped the last 6 months to clear off home loan on the first flat. Will restart again.",
+      "source": "Reddit post",
+      "date": "2023-06-04",
+      "link": "https://www.reddit.com/r/FIREIndia/comments/140da40/my_fire_journey_so_far/",
+      "match": true
+     }
+    },
+    {
+     "label": "Income drop or job change",
+     "items": 57,
+     "by_source": {
+      "Reddit": 51,
+      "Play Store": 1,
+      "YouTube": 5
+     },
+     "quote": {
+      "id": "1jbmwse",
+      "quote": "I wanted to start investing due to tax relief and expected salary hikes.",
+      "source": "Reddit post",
+      "date": "2025-03-15",
+      "link": "https://www.reddit.com/r/personalfinanceindia/comments/1jbmwse/what_is_the_best_discount_broker_in_the_market/",
+      "match": true
+     }
+    },
+    {
+     "label": "Loan or EMI",
+     "items": 42,
+     "by_source": {
+      "Reddit": 40,
+      "Play Store": 1,
+      "YouTube": 1
+     },
+     "quote": {
+      "id": "140da40",
+      "quote": "Skipped the last 6 months to clear off home loan on the first flat. Will restart again.",
+      "source": "Reddit post",
+      "date": "2023-06-04",
+      "link": "https://www.reddit.com/r/FIREIndia/comments/140da40/my_fire_journey_so_far/",
+      "match": true
+     }
+    },
+    {
+     "label": "Not specified",
+     "items": 16,
+     "by_source": {
+      "Reddit": 4,
+      "Play Store": 1,
+      "YouTube": 11
+     },
+     "quote": {
+      "id": "1q9viec",
+      "quote": "Because there is no predictability, fixed SIPs do not work for me right now.",
+      "source": "Reddit post",
+      "date": "2026-01-11",
+      "link": "https://www.reddit.com/r/IndianStockMarket/comments/1q9viec/critique_my_3_etf_picks/",
+      "match": false
+     }
+    }
+   ]
+  },
+  "STOP_OPS_FAILURE": {
+   "parent": "STOP_OPS_FAILURE",
+   "label": "Debit or operations failure",
+   "items": 41,
+   "by_source": {
+    "Reddit": 5,
+    "Play Store": 16,
+    "YouTube": 20
+   },
+   "subs": [
+    {
+     "label": "Withdrawal or payout stuck",
+     "items": 11,
+     "by_source": {
+      "Reddit": 1,
+      "Play Store": 9,
+      "YouTube": 1
+     },
+     "quote": {
+      "id": "02d756db-bd06-45ad-9575-499892aa93f6",
+      "quote": "When I tried to withdraw my money, I never received the OTP required for verification.",
+      "source": "Play Store review",
+      "date": "2026-07-14",
+      "link": "https://play.google.com/store/apps/details?id=com.nextbillion.groww&reviewId=02d756db-bd06-45ad-9575-499892aa93f6",
+      "match": true
+     }
+    },
+    {
+     "label": "Cancelled SIP still deducted",
+     "items": 8,
+     "by_source": {
+      "Reddit": 0,
+      "Play Store": 1,
+      "YouTube": 7
+     },
+     "quote": {
+      "id": "yt_Ugx06J9xmHKWAuiOJSB4AaABAg",
+      "quote": "maine same procedure mai sip star Kiya tha but 5 bar sip cancel huwa",
+      "source": "YouTube comment",
+      "date": "about 2025-10",
+      "link": "https://www.youtube.com/watch?v=MExMf8_g4CE&lc=Ugx06J9xmHKWAuiOJSB4AaABAg",
+      "match": true
+     }
+    },
+    {
+     "label": "Debit failed or not deducted",
+     "items": 3,
+     "by_source": {
+      "Reddit": 0,
+      "Play Store": 3,
+      "YouTube": 0
+     },
+     "quote": {
+      "id": "3eae3928-84eb-4a52-8bbd-5b3b4df372fc",
+      "quote": "my sip is not processed since over a month now",
+      "source": "Play Store review",
+      "date": "2026-08-10",
+      "link": "https://play.google.com/store/apps/details?id=com.nextbillion.groww&reviewId=3eae3928-84eb-4a52-8bbd-5b3b4df372fc",
+      "match": true
+     }
+    },
+    {
+     "label": "Debited but units not allotted",
+     "items": 1,
+     "by_source": {
+      "Reddit": 0,
+      "Play Store": 1,
+      "YouTube": 0
+     },
+     "quote": {
+      "id": "f0abcae3-3fb7-4c75-a7ee-d569088c0d20",
+      "quote": "money locked with them but no funds allotted",
+      "source": "Play Store review",
+      "date": "2026-08-14",
+      "link": "https://play.google.com/store/apps/details?id=com.nextbillion.groww&reviewId=f0abcae3-3fb7-4c75-a7ee-d569088c0d20",
+      "match": true
+     }
+    },
+    {
+     "label": "Not specified",
+     "items": 19,
+     "by_source": {
+      "Reddit": 4,
+      "Play Store": 3,
+      "YouTube": 12
+     },
+     "quote": {
+      "id": "1031fil",
+      "quote": "I am already investing (since the pause) in Navi US Total Market fund.",
+      "source": "Reddit post",
+      "date": "2023-01-04",
+      "link": "https://www.reddit.com/r/IndiaInvestments/comments/1031fil/motilal_oswal_presented_bill_for_my_sp500_sip/",
+      "match": false
+     }
+    }
+   ]
+  },
+  "PLAT_FEATURE_MISSING": {
+   "parent": "PLAT_FEATURE_MISSING",
+   "label": "Feature missing",
+   "items": 112,
+   "by_source": {
+    "Reddit": 27,
+    "Play Store": 54,
+    "YouTube": 31
+   },
+   "subs": [
+    {
+     "label": "Portfolio view, search or sorting",
+     "items": 23,
+     "by_source": {
+      "Reddit": 4,
+      "Play Store": 15,
+      "YouTube": 4
+     },
+     "quote": {
+      "id": "1925e536-18ef-4691-813e-bc0cc30d0b86",
+      "quote": "The dashboard has old data for the portfolio that really doesn't help to track my investments.",
+      "source": "Play Store review",
+      "date": "2026-03-12",
+      "link": "https://play.google.com/store/apps/details?id=com.nextbillion.groww&reviewId=1925e536-18ef-4691-813e-bc0cc30d0b86",
+      "match": true
+     }
+    },
+    {
+     "label": "STP, SWP or switch",
+     "items": 11,
+     "by_source": {
+      "Reddit": 1,
+      "Play Store": 7,
+      "YouTube": 3
+     },
+     "quote": {
+      "id": "yt_UgzuLA74pJo83a8fTvF4AaABAg",
+      "quote": "today I have switched it to direct plan through grow app.",
+      "source": "YouTube comment",
+      "date": "about 2020-10",
+      "link": "https://www.youtube.com/watch?v=qxu7CBYR864&lc=UgzuLA74pJo83a8fTvF4AaABAg",
+      "match": true
+     }
+    },
+    {
+     "label": "SIP options (weekly, step-up, date)",
+     "items": 11,
+     "by_source": {
+      "Reddit": 2,
+      "Play Store": 6,
+      "YouTube": 3
+     },
+     "quote": {
+      "id": "4a16d02f-f219-4e8d-866b-762eed990af4",
+      "quote": "I have to keep another App just to track my Daily Gains/Losses of MFs.",
+      "source": "Play Store review",
+      "date": "2026-10-14",
+      "link": "https://play.google.com/store/apps/details?id=com.nextbillion.groww&reviewId=4a16d02f-f219-4e8d-866b-762eed990af4",
+      "match": true
+     }
+    },
+    {
+     "label": "Statements and tax reports",
+     "items": 9,
+     "by_source": {
+      "Reddit": 3,
+      "Play Store": 4,
+      "YouTube": 2
+     },
+     "quote": {
+      "id": "d868d35d-efc5-47c6-8c92-d9596ae51d04",
+      "quote": "Unable to find all report at one place.",
+      "source": "Play Store review",
+      "date": "2026-04-27",
+      "link": "https://play.google.com/store/apps/details?id=com.nextbillion.groww&reviewId=d868d35d-efc5-47c6-8c92-d9596ae51d04",
+      "match": true
+     }
+    },
+    {
+     "label": "Products missing (NFO, ETF, IPO)",
+     "items": 8,
+     "by_source": {
+      "Reddit": 3,
+      "Play Store": 5,
+      "YouTube": 0
+     },
+     "quote": {
+      "id": "1azhhqj",
+      "quote": "how do i move the gold to some other app, will I have to withdraw and stop the SIP?",
+      "source": "Reddit post",
+      "date": "2024-02-25",
+      "link": "https://www.reddit.com/r/IndianStockMarket/comments/1azhhqj/want_to_move_digital_gold_from_tickertape_to/",
+      "match": true
+     }
+    },
+    {
+     "label": "Goal or planning tools",
+     "items": 6,
+     "by_source": {
+      "Reddit": 3,
+      "Play Store": 1,
+      "YouTube": 2
+     },
+     "quote": {
+      "id": "baa53d83-a471-4cb3-b996-85caf8e644f7",
+      "quote": "kindly include tailor made sip option for various financial goals like early retirement, buying car, buying house.",
+      "source": "Play Store review",
+      "date": "2025-05-20",
+      "link": "https://play.google.com/store/apps/details?id=com.nextbillion.groww&reviewId=baa53d83-a471-4cb3-b996-85caf8e644f7",
+      "match": true
+     }
+    },
+    {
+     "label": "Alerts or reminders",
+     "items": 0,
+     "by_source": {
+      "Reddit": 0,
+      "Play Store": 0,
+      "YouTube": 0
+     },
+     "quote": null
+    },
+    {
+     "label": "Not specified",
+     "items": 57,
+     "by_source": {
+      "Reddit": 14,
+      "Play Store": 25,
+      "YouTube": 18
+     },
+     "quote": {
+      "id": "0c2c71bd-b8ef-4ef4-8f0e-6b42b6aafe6a",
+      "quote": "also bought sip fund instead of one time , no confirmation or conversion option here also",
+      "source": "Play Store review",
+      "date": "2026-02-18",
+      "link": "https://play.google.com/store/apps/details?id=com.nextbillion.groww&reviewId=0c2c71bd-b8ef-4ef4-8f0e-6b42b6aafe6a",
+      "match": false
+     }
+    }
+   ]
+  }
+ },
+ "exclusions": {
+  "rule": "A reply written by the platform is not a user's evidence. Detection is text-based (the authors of Reddit and YouTube items were never stored): phrases such as \"write to us at\", \"we sincerely apologise\" or \"thank you for reaching out\". A user writing TO support is kept.",
+  "coded": {
+   "checked": 2110,
+   "excluded": 0,
+   "excluded_ids": []
+  },
+  "collected": {
+   "reddit_posts": {
+    "checked": 14127,
+    "flagged": 0
+   },
+   "reddit_comments": {
+    "checked": 84417,
+    "flagged": 8
+   },
+   "youtube": {
+    "checked": 32995,
+    "flagged": 1
+   }
+  },
+  "play_store": {
+   "raw_reviews": 8000,
+   "raw_with_developer_reply": 6309,
+   "coded_checked": 196,
+   "coded_text_containing_the_reply": 0
+  }
+ },
+ "review_log": [
+  {
+   "tag": "PLAT_SUPPORT_FAILURE",
+   "label": "Support failure",
+   "checked": 20,
+   "right": 13,
+   "partial": 2,
+   "wrong": 5,
+   "rule": "Keep only if the text mentions support (customer care, ticket, helpdesk, no response, call centre and similar).",
+   "items_with_tag": 55,
+   "removed": 14,
+   "wrong_removed": 4,
+   "right_removed": 0,
+   "partial_removed": 0,
+   "reviewer": "Claude (AI-assisted read of the posts, not human-verified)"
+  },
+  {
+   "tag": "STOP_CONFUSION",
+   "label": "Confusion",
+   "checked": 16,
+   "right": 3,
+   "partial": 4,
+   "wrong": 9,
+   "rule": "Keep only if the text states confusion (confusing, did not understand, jargon, too many funds, randomly and similar).",
+   "items_with_tag": 16,
+   "removed": 10,
+   "wrong_removed": 7,
+   "right_removed": 0,
+   "partial_removed": 3,
+   "reviewer": "Claude (AI-assisted read of the posts, not human-verified)"
+  },
+  {
+   "tag": "STOP_LOST_TRUST",
+   "label": "Lost trust",
+   "checked": 20,
+   "right": 7,
+   "partial": 8,
+   "wrong": 5,
+   "rule": "Keep only if the text mentions distrust (scam, fake, misleading, without consent, hidden charges and similar) or the item is also tagged platform trust loss.",
+   "items_with_tag": 26,
+   "removed": 12,
+   "wrong_removed": 5,
+   "right_removed": 0,
+   "partial_removed": 3,
+   "reviewer": "Claude (AI-assisted read of the posts, not human-verified)"
+  }
+ ],
+ "corrections": {
+  "rows": [
+   {
+    "item_id": "101m1pg",
+    "source": "Reddit post",
+    "field": "qs",
+    "ai_value": "Q1,Q2,Q8,Q9",
+    "human_value": "Q1,Q2,Q8",
+    "reason": "goal-based SIP for daughter + FIRE, stepping up; Q1: SIP sized for daughter's education/marriage (3 Cr in 10 yrs) and FIRE (8 Cr). Q2: plans to raise SIP from 75k to 1L with 10% annual step",
+    "corrected_by": "analyst, hand labelling of the golden set (20 items)",
+    "date_added": "2026-10-26"
+   },
+   {
+    "item_id": "1kzsbnx",
+    "source": "Reddit post",
+    "field": "qs",
+    "ai_value": "Q1,Q2,Q3,Q8,Q9",
+    "human_value": "Q1,Q3,Q8",
+    "reason": "repaying father's plot loan forces SIP cut; Q1: aimed for ~1 Cr MF portfolio by 30. Q3: plans to cut SIP from 80k-100k to 10k to repay 38L to father within 3 yrs, before marriage. Q8:",
+    "corrected_by": "analyst, hand labelling of the golden set (20 items)",
+    "date_added": "2026-10-26"
+   },
+   {
+    "item_id": "1fki5o8",
+    "source": "Reddit post",
+    "field": "relevant",
+    "ai_value": "P",
+    "human_value": "N",
+    "reason": "LIC policy bought under family pressure; About an LIC insurance policy and getting a refund. No SIP experience. Family-pressure angle is real but does not bear on SIP behaviour.",
+    "corrected_by": "analyst, hand labelling of the golden set (20 items)",
+    "date_added": "2026-10-26"
+   },
+   {
+    "item_id": "d8a4dfa6-ea2b-44f6-bbf5-3a98fd70d5da",
+    "source": "Play Store review",
+    "field": "relevant",
+    "ai_value": "P",
+    "human_value": "Y",
+    "reason": "equity SIP hard to find, wants unified portfolio view; Two concrete needs: easier access to equity SIP and one snapshot of equity, MF and other holdings. Q4 because the snapshot request reflects",
+    "corrected_by": "analyst, hand labelling of the golden set (20 items)",
+    "date_added": "2026-10-26"
+   },
+   {
+    "item_id": "140da40",
+    "source": "Reddit post",
+    "field": "qs",
+    "ai_value": "Q2,Q3,Q4,Q5,Q8,Q9",
+    "human_value": "Q2,Q3,Q8",
+    "reason": "paused SIP 6 months to prepay loan, will restart; Q2: started small in 2017, scaled up after clearing ~22L education loan. Q3: skipped last 6 months of SIP to clear home loan on first flat",
+    "corrected_by": "analyst, hand labelling of the golden set (20 items)",
+    "date_added": "2026-10-26"
+   },
+   {
+    "item_id": "p6n87rz",
+    "source": "Reddit comment",
+    "field": "qs",
+    "ai_value": "Q1,Q4",
+    "human_value": "Q1,Q8",
+    "reason": "FIRE target, ancestral property outside portfolio; Thin reply comment. Q1: states an 8 Cr FIRE target and plan to buy a house near Mumbai/Pune and retire. Q8: ancestral property (~60L) as a s",
+    "corrected_by": "analyst, hand labelling of the golden set (20 items)",
+    "date_added": "2026-10-26"
+   },
+   {
+    "item_id": "17uv46g",
+    "source": "Reddit post",
+    "field": "qs",
+    "ai_value": "",
+    "human_value": "Q1,Q5,Q8",
+    "reason": "first-job starter, parents vs own risk view; Main ask is fund-picking, but gives own goals (marriage, house, wealth), age/gender/first salary, and parental influence she disagrees with.",
+    "corrected_by": "analyst, hand labelling of the golden set (20 items)",
+    "date_added": "2026-10-26"
+   },
+   {
+    "item_id": "ovu59ye",
+    "source": "Reddit comment",
+    "field": "qs",
+    "ai_value": "",
+    "human_value": "Q1,Q7,Q8",
+    "reason": "father-pushed first-paycheck SIP, kept it 10 yrs; Q7 is borderline: shows one continuer and how they started (small amount, first salary, parental push) but does not say why they kept going.",
+    "corrected_by": "analyst, hand labelling of the golden set (20 items)",
+    "date_added": "2026-10-26"
+   },
+   {
+    "item_id": "1en1uzk",
+    "source": "Reddit post",
+    "field": "qs",
+    "ai_value": "Q2,Q3,Q5,Q8,Q9",
+    "human_value": "Q3,Q5,Q8",
+    "reason": "family cash demand, wants to pause to rebuild emergency fund; Considering stopping, not yet stopped. Trigger is a sudden family need plus job-security fear.",
+    "corrected_by": "analyst, hand labelling of the golden set (20 items)",
+    "date_added": "2026-10-26"
+   },
+   {
+    "item_id": "54937f05-0997-4ce6-9df6-a27bbfab9093",
+    "source": "Play Store review",
+    "field": "qs",
+    "ai_value": "Q4,Q5,Q9",
+    "human_value": "Q4,Q5,Q6,Q9",
+    "reason": "imported fund values wrong, support useless; About MF portfolio tracking, not SIP specifically. Q6 because they cross-check against CAS statements outside the app.",
+    "corrected_by": "analyst, hand labelling of the golden set (20 items)",
+    "date_added": "2026-10-26"
+   },
+   {
+    "item_id": "9ad67997-e927-47a4-8749-367331c63130",
+    "source": "Play Store review",
+    "field": "relevant",
+    "ai_value": "Y",
+    "human_value": "P",
+    "reason": "SIP cancellation penalty, unreachable support; Garbled text. Mentions cancelling SIP and a penalty but gives no reason for cancelling.",
+    "corrected_by": "analyst, hand labelling of the golden set (20 items)",
+    "date_added": "2026-10-26"
+   },
+   {
+    "item_id": "15a5iy6",
+    "source": "Reddit post",
+    "field": "relevant",
+    "ai_value": "Y",
+    "human_value": "P",
+    "reason": "new earner, started SIP, confused; Real but thin: started SIP as part of a salary split, first significant income, confused about where and how.",
+    "corrected_by": "analyst, hand labelling of the golden set (20 items)",
+    "date_added": "2026-10-26"
+   },
+   {
+    "item_id": "15a5iy6",
+    "source": "Reddit post",
+    "field": "qs",
+    "ai_value": "",
+    "human_value": "Q1,Q5,Q8",
+    "reason": "new earner, started SIP, confused; Real but thin: started SIP as part of a salary split, first significant income, confused about where and how.",
+    "corrected_by": "analyst, hand labelling of the golden set (20 items)",
+    "date_added": "2026-10-26"
+   },
+   {
+    "item_id": "obzdjho",
+    "source": "Reddit comment",
+    "field": "qs",
+    "ai_value": "Q3,Q5,Q8",
+    "human_value": "Q2,Q3,Q5,Q8",
+    "reason": "macro anxiety, present safety over SIP; Kept buying through 18 months of volatility; weighing a stop out of uncertainty, not cash shortage (saves 75% of income).",
+    "corrected_by": "analyst, hand labelling of the golden set (20 items)",
+    "date_added": "2026-10-26"
+   },
+   {
+    "item_id": "j0xjd2q",
+    "source": "Reddit comment",
+    "field": "relevant",
+    "ai_value": "Y",
+    "human_value": "P",
+    "reason": "dip-buying via GTT triggers alongside SIP; Own behaviour (active monitoring, trigger alerts, redeeming debt funds) but mostly trading/strategy talk.",
+    "corrected_by": "analyst, hand labelling of the golden set (20 items)",
+    "date_added": "2026-10-26"
+   },
+   {
+    "item_id": "j0xjd2q",
+    "source": "Reddit comment",
+    "field": "qs",
+    "ai_value": "Q2,Q4",
+    "human_value": "Q4",
+    "reason": "dip-buying via GTT triggers alongside SIP; Own behaviour (active monitoring, trigger alerts, redeeming debt funds) but mostly trading/strategy talk.",
+    "corrected_by": "analyst, hand labelling of the golden set (20 items)",
+    "date_added": "2026-10-26"
+   },
+   {
+    "item_id": "236b0231-4c2b-495d-bd16-c5a936a96b1f",
+    "source": "Play Store review",
+    "field": "qs",
+    "ai_value": "Q4,Q5",
+    "human_value": "Q4,Q5,Q9",
+    "reason": "missing instalment, duplicate SIP folios; Checks whether each month's instalment appears; support contacted repeatedly without resolution.",
+    "corrected_by": "analyst, hand labelling of the golden set (20 items)",
+    "date_added": "2026-10-26"
+   },
+   {
+    "item_id": "yt_UgxDitYkKh-YYK_oOQ14AaABAg",
+    "source": "YouTube comment",
+    "field": "relevant",
+    "ai_value": "Y",
+    "human_value": "N",
+    "reason": "index vs active large-cap switch; Fund-picking question. Mentions holding ICICI Pru Large Cap for 2 yrs and being confused, which could argue for P (Q5), but the confusion is",
+    "corrected_by": "analyst, hand labelling of the YouTube golden set (6 items)",
+    "date_added": "2026-10-26"
+   },
+   {
+    "item_id": "yt_Ugz5Xn91aymEAZcQRKp4AaABAg",
+    "source": "YouTube comment",
+    "field": "qs",
+    "ai_value": "Q5,Q9",
+    "human_value": "Q5,Q6,Q9",
+    "reason": "beginner confused where to start; Real but thin: wants to learn mutual funds, uses YouTube videos, still confused where to start and asks for a guided path. No SIP behaviour",
+    "corrected_by": "analyst, hand labelling of the YouTube golden set (6 items)",
+    "date_added": "2026-10-26"
+   },
+   {
+    "item_id": "yt_UgwvtI7C1iqRTG5FB5t4AaABAg",
+    "source": "YouTube comment",
+    "field": "qs",
+    "ai_value": "",
+    "human_value": "Q8,Q9",
+    "reason": "wants Hindi/Hinglish content for parents; Content request. Hints at a segment (older generation, language barrier) and an unmet need (vernacular explainers), but the need belongs to",
+    "corrected_by": "analyst, hand labelling of the YouTube golden set (6 items)",
+    "date_added": "2026-10-26"
+   },
+   {
+    "item_id": "yt_UgyK82_DWAz5qe7DDsV4AaABAg",
+    "source": "YouTube comment",
+    "field": "qs",
+    "ai_value": "Q4,Q5,Q9",
+    "human_value": "Q4,Q5",
+    "reason": "autopay not debited despite balance; Hindi: \"My SIP autopay is on the 10th but it still was not deducted, and there is money in the account, why did this happen?\" Q4: they notic",
+    "corrected_by": "analyst, hand labelling of the YouTube golden set (6 items)",
+    "date_added": "2026-10-26"
+   }
+  ],
+  "n": 21,
+  "items": 19,
+  "by_field": {
+   "qs": 15,
+   "relevant": 6
+  },
+  "effect": {
+   "relevant_before": 1967,
+   "relevant_after": 1965,
+   "strong_before": 1556,
+   "strong_after": 1553,
+   "tagged": 2110
+  },
+  "file": "data/manual/corrections.csv"
+ },
+ "headline": {
+  "p1": {
+   "tagged": {
+    "Reddit": 1379,
+    "Play Store": 196,
+    "YouTube": 535
+   },
+   "relevant": {
+    "Reddit": 1368,
+    "Play Store": 178,
+    "YouTube": 419
+   }
+  },
+  "p2": {
+   "cause": {
+    "Reddit": 102,
+    "Play Store": 3,
+    "YouTube": 17
+   },
+   "after_stop": {
+    "Reddit": 0,
+    "Play Store": 38,
+    "YouTube": 3
+   }
+  },
+  "p3": {
+   "most_q": "Q8",
+   "most": {
+    "Reddit": 907,
+    "Play Store": 12,
+    "YouTube": 133
+   },
+   "least_q": "Q7",
+   "least": {
+    "Reddit": 111,
+    "Play Store": 0,
+    "YouTube": 39
+   }
+  },
+  "p4": {
+   "voluntary_pct": {
+    "Reddit": 95,
+    "Play Store": 27,
+    "YouTube": 68
+   },
+   "base": {
+    "Reddit": 391,
+    "Play Store": 97,
+    "YouTube": 120
+   }
+  },
+  "p5": {
+   "lapse": {
+    "Reddit": 137,
+    "Play Store": 14,
+    "YouTube": 70
+   }
+  },
+  "p7": {
+   "relevant": {
+    "Reddit": 1368,
+    "Play Store": 178,
+    "YouTube": 419
+   }
+  },
+  "p8": {
+   "golden": {
+    "reddit_post": 8,
+    "playstore_review": 6,
+    "reddit_comment": 6,
+    "YouTube comment": 6
+   }
+  }
+ },
+ "consistency": [
+  {
+   "check": "tagged count equals the rows in the evidence file",
+   "passed": true,
+   "detail": "2110"
+  },
+  {
+   "check": "relevant count equals the relevant rows",
+   "passed": true,
+   "detail": "1965"
+  },
+  {
+   "check": "source counts add up to tagged and to relevant",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "check": "funnel ends at the same tagged and relevant counts",
+   "passed": true,
+   "detail": "2110 / 1965"
+  },
+  {
+   "check": "every segment table covers all relevant items",
+   "passed": true,
+   "detail": "5 tables"
+  },
+  {
+   "check": "no question, branch or theme row exceeds the relevant count",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "check": "date coverage covers all relevant items",
+   "passed": true,
+   "detail": "1965"
+  },
+  {
+   "check": "human corrections applied are the ones in the file",
+   "passed": true,
+   "detail": ""
+  }
+ ],
+ "vague_pages": {
+  "page2": [
+   "APP_USABILITY",
+   "PLAT_NO_CONTROL",
+   "PLAT_SUPPORT_FAILURE",
+   "STOP_OPS_FAILURE",
+   "STOP_CASH_CRUNCH",
+   "STOP_BETTER_ALTERNATIVE"
+  ],
+  "page3": {
+   "Q5": [
+    "WORRY_FUND_CHOICE"
+   ],
+   "Q9": [
+    "PLAT_FEATURE_MISSING"
+   ]
+  }
  }
 }

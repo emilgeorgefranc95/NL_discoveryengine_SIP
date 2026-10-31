@@ -2,6 +2,8 @@
 
 Run from discovery_engine/:  .venv/bin/python pipeline/export.py [--no-embed]
 
+Also reads data/manual/corrections.csv (human corrections, applied) and data/manual/ai_tag_review.csv (the AI-assisted tag review log).
+
 Writes:
   evidence.csv       one row per tagged item (2,110), with every label, the verified quote and a short masked excerpt
   tables.json        every number and chart the pages show (definitions come from pipeline/rules.py)
@@ -72,11 +74,44 @@ for f in glob.glob(str(D / "reddit/posts_*.jsonl")) + glob.glob(str(D / "reddit/
         perma[r["id"]] = r.get("permalink")
 ytvideo = {"yt_" + r["id"]: r["video_id"] for r in jl(D / "youtube/comments.jsonl")}
 
+# ------------------------------------------------------------------ human corrections (data/manual/corrections.csv)
+CORR_PATH = D / "manual" / "corrections.csv"
+corrections = pd.read_csv(CORR_PATH, dtype=str, keep_default_na=False) if CORR_PATH.exists() else pd.DataFrame(
+    columns=["item_id", "source", "field", "ai_value", "human_value", "reason", "corrected_by", "date_added"])
+corr = defaultdict(dict)
+for c in corrections.itertuples():
+    corr[c.item_id][c.field] = c.human_value
+unknown_corr = sorted(set(corrections.item_id) - set(v2))
+assert not unknown_corr, f"corrections.csv names items that are not in the coded data: {unknown_corr}"
+
+
+def is_staff(text):
+    return bool(R.STAFF_REPLY.search(text or ""))
+
+
+def apply_tag_rules(item_id, themes, quote, text):
+    """Drop a theme when the text does not support it (rules.TAG_RULES). Returns (kept themes, dropped themes)."""
+    blob = f"{quote} {mask(text)[:600]}"
+    kept, dropped = [], []
+    for t in themes:
+        rule = R.TAG_RULES.get(t)
+        ok = True if not rule else bool(rule["require"].search(blob)) or any(c in themes for c in rule["or_cotags"])
+        (kept if ok else dropped).append(t)
+    return kept, dropped
+
+
 # ------------------------------------------------------------------ evidence table
 rows = []
+staff_excluded, tag_dropped, tag_decision = [], defaultdict(list), {}
+before_rel = before_strong = 0
 for i, r in v2.items():
     s = src[i]
     kind = s["source"]
+    if is_staff(s.get("text", "")) or is_staff(r.get("quote", "")):
+        staff_excluded.append(i)                      # a reply written by the platform is not a user's evidence
+        continue
+    before_rel += r["relevant"] in RELEVANT
+    before_strong += r["relevant"] == "Y"
     seg = r.get("segment") or {}
     th = list(r.get("themes") or [])
     qs = list(r.get("qs") or [])
@@ -85,6 +120,17 @@ for i, r in v2.items():
         th = [t for t in th if t != "NEED_HUMAN_HELP"]
         if "Q9" in qs and not [t for t in th if t.startswith("NEED_")]:
             qs.remove("Q9")
+    relevant_final = corr[i].get("relevant", r["relevant"])
+    if "qs" in corr[i]:
+        qs = [q for q in corr[i]["qs"].split(",") if q]
+    th, dropped = apply_tag_rules(i, th, r.get("quote") or "", s.get("text", ""))
+    for t in dropped:
+        tag_dropped[t].append(i)
+    for t in R.TAG_RULES:
+        if t in (r.get("themes") or []):
+            tag_decision[(t, i)] = t not in dropped
+    if relevant_final in RELEVANT and R.APP_USABILITY_RE.search(f"{r.get('quote') or ''} {mask(s.get('text', ''))[:600]}"):
+        th.append(R.APP_USABILITY)                    # derived theme: "hard to use the app"
     inv, vol = any(t in R.INVOLUNTARY for t in th), any(t in R.VOLUNTARY for t in th)
     link = ""
     if kind in ("reddit_post", "reddit_comment") and perma.get(i):
@@ -97,9 +143,9 @@ for i, r in v2.items():
     rows.append(dict(
         id=i, source=kind, source_label=R.SOURCE_LABEL[kind], source_group=R.SOURCE_GROUP[kind],
         subreddit=s.get("subreddit", "") if kind.startswith("reddit") else "", date=date, year=int(date[:4]) if date[:4].isdigit() else 0,
-        relevant=r["relevant"], is_relevant=r["relevant"] in RELEVANT, qs=",".join(sorted(qs)), themes=",".join(th),
+        relevant=relevant_final, is_relevant=relevant_final in RELEVANT, qs=",".join(sorted(qs)), themes=",".join(th),
         stage=r.get("stage", "UNKNOWN"), outcome=r.get("outcome", "UNKNOWN"),
-        lapse=r.get("outcome") in R.LAPSE_OUTCOMES and r["relevant"] in RELEVANT,
+        lapse=r.get("outcome") in R.LAPSE_OUTCOMES and relevant_final in RELEVANT,
         severity=R.ITEM_SEVERITY.get(r.get("outcome"), 0),
         income=str(seg.get("income", "UNKNOWN")).upper(), age=str(seg.get("age", "unknown")), age_band=age_band(seg.get("age")),
         money_source=str(seg.get("money_source", "unknown")).lower(), influencer=str(seg.get("influencer", "unknown")).lower(),
@@ -113,7 +159,8 @@ for i, r in v2.items():
 ev = pd.DataFrame(rows)
 rel = ev[ev.is_relevant]
 N_TAGGED, N_REL = len(ev), len(rel)
-assert N_TAGGED == len(v2) and N_REL == sum(r["relevant"] in RELEVANT for r in v2.values())
+assert N_TAGGED == len(v2) - len(staff_excluded)
+N_STRONG_BEFORE, N_REL_BEFORE = before_strong, before_rel
 
 for _c in ("income", "money_source", "influencer", "experience"):
     ev[_c] = ev[_c].where(ev[_c].map(stated), "Not stated")
@@ -321,6 +368,7 @@ def tagger_df(rec, ids):
     for i in ids:
         r = rec[i]
         th = [t for t in r["themes"] if t != "NEED_HUMAN_HELP"]
+        th, _ = apply_tag_rules(i, th, r.get("quote") or "", src[i].get("text", ""))      # same rules as the main table, so the splits agree
         inv, vol = any(t in R.INVOLUNTARY for t in th), any(t in R.VOLUNTARY for t in th)
         out.append(dict(id=i, relevant=r["relevant"], reason_class="mixed" if inv and vol else "involuntary" if inv else "voluntary" if vol else "none",
                         branches=",".join(sorted({R.THEME_BRANCH[t] for t in th if t in R.THEME_BRANCH}))))
@@ -398,6 +446,93 @@ golden = dict(round1=golden_stats(D / "golden/golden_comparison.json"), youtube=
 flags_r1 = Counter(f for r in v1.values() for f in r.get("flags", []))
 flags_r2 = Counter(f for r in v2.values() for f in r.get("flags", []))
 human_help_dropped = sum(1 for r in v2.values() if "NEED_HUMAN_HELP" in r.get("themes", []) and True)
+
+# ------------------------------------------------------------------ sub-themes for the vague buckets
+def best_quote(df, rx):
+    d = df[df.quote.str.len() > 0].copy()
+    if d.empty:
+        return None
+    d["_m"] = d.quote.map(lambda q: bool(rx.search(q))) if rx is not None else False
+    d["_s"] = d._m.astype(int) * 4 + (d.relevant == "Y").astype(int) * 2 + (d.confidence == "H").astype(int)
+    r = d.sort_values(["_s", "id"], ascending=[False, True]).iloc[0]
+    return dict(id=r.id, quote=r.quote, source=r.source_label, date=r.date_label, link=r.link, match=bool(r._m))
+
+
+def by_src(df):
+    return {g: int((df.source_group == g).sum()) for g in ("Reddit", "Play Store", "YouTube")}
+
+
+def subtheme_table(parent):
+    themes = {parent, *R.SUBTHEME_ALSO_FOR.get(parent, ())}
+    d = rel[rel.themes.str.split(",").map(lambda x: bool(themes & set(x)))]
+    blob = d.quote + " " + d.excerpt
+    subs, seen = [], pd.Series(False, index=d.index)
+    for lab, rx in R.SUBTHEMES[parent]:
+        m = blob.map(lambda b: bool(rx.search(b)))
+        seen |= m
+        subs.append(dict(label=lab, items=int(m.sum()), by_source=by_src(d[m]), quote=best_quote(d[m], rx)))
+    subs.sort(key=lambda x: -x["items"])
+    subs.append(dict(label="Not specified", items=int((~seen).sum()), by_source=by_src(d[~seen]), quote=best_quote(d[~seen], None)))
+    return dict(parent=parent, label=label(parent), items=int(len(d)), by_source=by_src(d), subs=subs)
+
+
+subthemes = {p: subtheme_table(p) for p in R.SUBTHEMES}
+
+# ------------------------------------------------------------------ exclusions: platform staff replies
+def scan_staff(texts):
+    texts = list(texts)
+    return dict(checked=len(texts), flagged=sum(is_staff(t) for t in texts))
+
+
+raw_ps = pd.read_csv(D / "raw/groww_playstore_raw.csv")
+reply_of = dict(zip(raw_ps.reviewId, raw_ps.replyContent.fillna("")))
+ps_ids = [i for i in v2 if src[i]["source"] == "playstore_review"]
+ps_found = [i for i in ps_ids if i in reply_of]
+ps_leak = [i for i in ps_found if reply_of[i] and reply_of[i][:50].lower() in src[i]["text"].lower()]
+exclusions = dict(
+    rule="A reply written by the platform is not a user's evidence. Detection is text-based (the authors of Reddit and YouTube items were never stored): "
+         "phrases such as \"write to us at\", \"we sincerely apologise\" or \"thank you for reaching out\". A user writing TO support is kept.",
+    coded=dict(checked=len(v2), excluded=len(staff_excluded), excluded_ids=staff_excluded),
+    collected=dict(reddit_posts=scan_staff(json.loads(l).get("title", "") + " " + json.loads(l).get("selftext", "") for f in glob.glob(str(D / "reddit/posts_*.jsonl")) for l in open(f, encoding="utf-8")),
+                   reddit_comments=scan_staff(json.loads(l)["body"] for f in glob.glob(str(D / "reddit/comments_*.jsonl")) for l in open(f, encoding="utf-8")),
+                   youtube=scan_staff(json.loads(l)["text"] for l in open(D / "youtube/comments.jsonl", encoding="utf-8"))),
+    play_store=dict(raw_reviews=len(raw_ps), raw_with_developer_reply=int((raw_ps.replyContent.fillna("") != "").sum()), coded_checked=len(ps_found),
+                    coded_text_containing_the_reply=len(ps_leak)),
+)
+
+# ------------------------------------------------------------------ AI-assisted review of suspicious tags (data/manual/ai_tag_review.csv)
+RULE_TEXT = {
+    "STOP_LOST_TRUST": "Keep only if the text mentions distrust (scam, fake, misleading, without consent, hidden charges and similar) or the item is also tagged platform trust loss.",
+    "STOP_CONFUSION": "Keep only if the text states confusion (confusing, did not understand, jargon, too many funds, randomly and similar).",
+    "PLAT_SUPPORT_FAILURE": "Keep only if the text mentions support (customer care, ticket, helpdesk, no response, call centre and similar).",
+}
+rel_ids = set(rel.id)
+review_log = []
+if (D / "manual/ai_tag_review.csv").exists():
+    rv = pd.read_csv(D / "manual/ai_tag_review.csv")
+    for tag, g in rv.groupby("tag"):
+        g = g.assign(kept=[tag_decision.get((tag, i), True) for i in g.item_id])
+        before = [i for (t, i) in tag_decision if t == tag and i in rel_ids]
+        removed = [i for i in before if not tag_decision[(tag, i)]]
+        v = g.verdict.value_counts().to_dict()
+        review_log.append(dict(
+            tag=tag, label=label(tag), checked=int(len(g)), right=int(v.get("right", 0)), partial=int(v.get("partial", 0)), wrong=int(v.get("wrong", 0)),
+            rule=RULE_TEXT[tag], items_with_tag=len(before), removed=len(removed),
+            wrong_removed=int(((g.verdict == "wrong") & ~g.kept).sum()), right_removed=int(((g.verdict == "right") & ~g.kept).sum()),
+            partial_removed=int(((g.verdict == "partial") & ~g.kept).sum()),
+            reviewer="Claude (AI-assisted read of the posts, not human-verified)"))
+
+# ------------------------------------------------------------------ human corrections table (applied above)
+corr_rows = []
+for c in corrections.itertuples():
+    corr_rows.append(dict(item_id=c.item_id, source=R.SOURCE_LABEL.get(c.source, c.source), field=c.field, ai_value=c.ai_value, human_value=c.human_value,
+                          reason=c.reason, corrected_by=c.corrected_by, date_added=c.date_added))
+corrections_table = dict(
+    rows=corr_rows, n=len(corr_rows), items=int(corrections.item_id.nunique()), by_field={k: int(v) for k, v in corrections.field.value_counts().items()},
+    effect=dict(relevant_before=N_REL_BEFORE, relevant_after=N_REL, strong_before=N_STRONG_BEFORE, strong_after=int((rel.relevant == "Y").sum()),
+                tagged=N_TAGGED),
+    file="data/manual/corrections.csv")
+
 validation = dict(
     prompt_versions=[dict(round=a, codebook=b, change=c, problem=d) for a, b, c, d in R.PROMPT_VERSIONS],
     agreement=agree,
@@ -440,8 +575,53 @@ meta = dict(as_of=as_of, built_at=datetime.now().isoformat(timespec="seconds"), 
             lapse_stories=int(rel.lapse.sum()), definitions=dict(tagged=R.TAGGED_DEF, relevant=R.RELEVANT_DEF, lapse_story=R.LAPSE_DEF),
             low_confidence_below=R.LOW_CONFIDENCE_BELOW, embed_model=EMBED_MODEL, questions=R.QUESTIONS, metric_tree=R.METRIC_TREE,
             by_source={g: dict(tagged=int((ev.source_group == g).sum()), relevant=int((rel.source_group == g).sum())) for g in ("Reddit", "Play Store", "YouTube")})
+for _r in review_log:
+    validation["ai_corrections"].append(dict(what=f'"{_r["label"]}" tag removed where the text did not support it', n=_r["removed"],
+                                             fix="Rule from the 20-post review; see the tag review log below."))
+validation["ai_corrections"].append(dict(what='"Hard to use the app" tag added by rule', n=int(rel.themes.str.contains(R.APP_USABILITY).sum()),
+                                         fix="Derived from the Play Store top-issues themes (crash, lag, login loops, confusing layout). The first version matched market \"crashes\" and tagged 31 items; "
+                                         "after reading the quotes it was narrowed to app context and now tags only the real complaints."))
+validation["ai_corrections"].append(dict(what="Platform staff replies removed", n=len(staff_excluded),
+                                         fix="None found among the coded items; the rule stays in place for new data."))
+# ------------------------------------------------------------------ source splits behind every page headline, and consistency checks
+gold_src = pd.read_csv(D / "golden/golden_set_LABELLED.csv")["source"].value_counts().to_dict()
+most_q, least_q = max(QTABLE, key=lambda q: QTABLE[q]["items"]), min(QTABLE, key=lambda q: QTABLE[q]["items"])
+rs = tree["reason_split"]
+headline = dict(
+    p1=dict(tagged=by_src(ev), relevant=by_src(rel)),
+    p2=dict(cause=opps["causes"][0]["by_source"], after_stop=opps["after_stop"][0]["by_source"]),
+    p3=dict(most_q=most_q, most=QTABLE[most_q]["by_source"], least_q=least_q, least=QTABLE[least_q]["by_source"]),
+    p4=dict(voluntary_pct={g: round(100 * rs["by_source"][g]["voluntary"] / max(1, sum(rs["by_source"][g].values()))) for g in ("Reddit", "Play Store", "YouTube")},
+            base={g: sum(rs["by_source"][g].values()) for g in ("Reddit", "Play Store", "YouTube")}),
+    p5=dict(lapse=segments["lapse_by_source"]),
+    p7=dict(relevant=by_src(rel)),
+    p8=dict(golden={k: int(v) for k, v in gold_src.items()} | {"YouTube comment": 6}),
+)
+checks = []
+
+
+def check(name, ok, detail=""):
+    checks.append(dict(check=name, passed=bool(ok), detail=detail))
+    assert ok, f"consistency check failed: {name} {detail}"
+
+
+check("tagged count equals the rows in the evidence file", N_TAGGED == len(ev), f"{N_TAGGED}")
+check("relevant count equals the relevant rows", N_REL == int(ev.is_relevant.sum()), f"{N_REL}")
+meta_by_source = {g: dict(tagged=int((ev.source_group == g).sum()), relevant=int((rel.source_group == g).sum())) for g in ("Reddit", "Play Store", "YouTube")}
+check("source counts add up to tagged and to relevant",
+      sum(v["tagged"] for v in meta_by_source.values()) == N_TAGGED and sum(v["relevant"] for v in meta_by_source.values()) == N_REL)
+check("funnel ends at the same tagged and relevant counts", combined[2][1] == N_TAGGED and combined[3][1] == N_REL, f"{combined[2][1]} / {combined[3][1]}")
+check("every segment table covers all relevant items", all(sum(r["items"] for r in rows_) == N_REL for rows_ in segments["dimensions"].values()), "5 tables")
+check("no question, branch or theme row exceeds the relevant count", all(e["items"] <= N_REL for e in QTABLE.values()) and all(b["posts"] <= N_REL for b in tree["branches"].values())
+      and all(r["posts"] <= N_REL for k in opps for r in opps[k]))
+check("date coverage covers all relevant items", sum(d["n"] for d in dates.values()) == N_REL, f"{sum(d['n'] for d in dates.values())}")
+check("human corrections applied are the ones in the file", corrections_table["n"] == len(corrections))
+print(f"consistency: {sum(c['passed'] for c in checks)} of {len(checks)} checks passed")
+
 tables = dict(funnel=funnel, combined_funnel=combined, dates=dates, models=models, opportunities=opps, questions=QTABLE, tree=tree,
-              segments=segments, validation=validation, themes={t: label(t) for t in THEME_ALL})
+              segments=segments, validation=validation, themes={t: label(t) for t in THEME_ALL}, subthemes=subthemes, exclusions=exclusions,
+              review_log=review_log, corrections=corrections_table, headline=headline, consistency=checks,
+              vague_pages=dict(page2=R.VAGUE_PARENTS_PAGE2, page3=R.VAGUE_PARENTS_PAGE3))
 json.dump(tables, open(OUT / "tables.json", "w", encoding="utf-8"), ensure_ascii=False, indent=1, default=str)
 json.dump(meta, open(OUT / "meta.json", "w", encoding="utf-8"), ensure_ascii=False, indent=1)
 print(f"evidence.csv {N_TAGGED} tagged / {N_REL} relevant; as of {as_of}")

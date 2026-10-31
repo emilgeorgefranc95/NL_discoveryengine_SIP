@@ -40,8 +40,12 @@ class Index:
     def __init__(self):
         self.ev = pd.read_csv(EXPORT / "evidence.csv", keep_default_na=False)
         ids = json.load(open(EXPORT / "embed_ids.json"))
-        self.vecs = np.load(EXPORT / "embeddings.npy")
-        self.rows = self.ev.set_index("id").loc[ids].reset_index()
+        vecs = np.load(EXPORT / "embeddings.npy")
+        by_id = self.ev.set_index("id")
+        live = by_id["is_relevant"].astype(str).str.lower().eq("true")
+        keep = [k for k, i in enumerate(ids) if i in by_id.index and live[i]]      # only items that are still relevant after corrections
+        self.vecs = vecs[keep]
+        self.rows = by_id.loc[[ids[k] for k in keep]].reset_index()
         self.model_name = json.load(open(EXPORT / "meta.json"))["embed_model"]
         from fastembed import TextEmbedding
         self.model = TextEmbedding(model_name=self.model_name)

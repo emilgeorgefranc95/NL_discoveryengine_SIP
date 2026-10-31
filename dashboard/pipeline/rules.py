@@ -119,6 +119,10 @@ PROMPT_VERSIONS = [
     ("Round 2", "CODEBOOK v2", "Recall-oriented: tag whenever the text gives real evidence, even in passing; relevance relaxed for rich personal context. "
      "Re-coded the Reddit items round 1 found relevant, plus Play Store (196) and YouTube (535).",
      "Over-tagged Q9, Q2, Q4 and Q5; the \"needs human help\" tag fired on every Reddit post because posting is itself asking for advice."),
+    ("Round 2.1", "CODEBOOK v2.1 (rules applied after coding; the items were not re-coded)",
+     "Clarifies three tags after a 20-post read of each: lost trust only when trust in the platform or fund house is stated; confusion only when confusion is "
+     "the stated reason; support failure only when contact with support is described. Adds a derived \"hard to use the app\" bucket and sub-themes for the vague buckets.",
+     "Applied as text rules in pipeline/rules.py, so the original round 2 coding is unchanged. A re-run with the v2.1 wording would be the cleaner fix."),
 ]
 
 # ---- quote support check ---------------------------------------------------------------------------------------------------------
@@ -159,3 +163,118 @@ QUESTION_LEX = {k: _re.compile(v, _I) for k, v in {
     "Q8": r"\d+ ?(?:yo|years? old|lakh|k\b)|age|salary|income|student|married|kid|parent|loan|emi|in hand|in-hand|job|working",
     "Q9": r"wish|want|need|should|add|feature|option|please|hope|can't|cannot|no way|missing|request|would like|allow|provide|gone",
 }.items()}
+
+
+# ================================================================================================================================
+# Changes made after the 20-post review of suspicious tags (data/manual/ai_tag_review.csv) and the pre-publication checklist
+# ================================================================================================================================
+
+# ---- platform staff replies are excluded (authors were not stored, so detection is text-based) ---------------------------------
+# A staff reply speaks AS the platform ("write to us at", "we sincerely apologise"). A user writing TO support ("Dear Groww Support Team") is kept.
+# Play Store developer replies sit in a separate column that never entered the coded text; export.py checks that.
+STAFF_REPLY = _re.compile(
+    r"(?:please )?feel free to (?:write|reach|contact|mail|email) (?:out )?(?:to )?us|(?:write|reach out|mail|email|dm|contact) (?:to )?us (?:at|on|via|through) "
+    r"|we sincerely apologi[sz]e|we apologi[sz]e for (?:the|any) (?:inconvenience|trouble)|we(?:'re| are) (?:really )?sorry to hear"
+    r"|thank you for (?:reaching out|contacting us|bringing this|your feedback)|for (?:any )?further assistance,? (?:please|kindly)"
+    r"|our (?:support|customer care|care) team (?:will|has|is)|raise a (?:ticket|request) (?:with|through) us|^dear (?:user|customer|investor|valued)\b",
+    _I)
+
+# ---- tag rules from the review: a theme stays only when the text actually supports it ------------------------------------------
+# Review result (20 items read per tag, 16 for confusion): lost trust 5 wrong + 8 partial, confusion 9 wrong + 4 partial, support failure 5 wrong + 2 partial.
+# The wrong ones were: lost trust about holdings or the whole market (not the platform or fund house); confusion tagged on after-the-fact questions;
+# support failure on app faults with no mention of support. Each rule below keeps the theme only when the text or a co-tag supports it.
+TAG_RULES = {
+    "STOP_LOST_TRUST": dict(
+        require=_re.compile(r"scam|fraud|fake|cheat|mislead|bhkane|bhatka|distrust|\btrust\b|without (?:my )?(?:consent|permission)|bina permission|hidden charge|"
+                            r"\blie\b|\blied\b|unsafe|not safe|bad things|zero hope|worst app|\bloot|thie(?:f|ves)", _I),
+        or_cotags=("PLAT_TRUST_LOSS",)),
+    "STOP_CONFUSION": dict(
+        require=_re.compile(r"confus|(?:don't|do not|didn't|did not|dont|didnt) (?:really )?(?:understand|know what)|no idea|not sure what|samajh (?:nahi|nhi)|jargon|"
+                            r"complicated|overwhelm|clueless|too many (?:funds|options|schemes)|\d+ different (?:mutual )?funds|randomly|lost track|blindly", _I),
+        or_cotags=()),
+    "PLAT_SUPPORT_FAILURE": dict(
+        require=_re.compile(r"support|cou?s?tomer (?:care|service|support)|helpdesk|help desk|ticket|call cent|chat option|no response|not respond|no reply|not reply|replied|"
+                            r"complaint|escalat|grievance|\bcare\b|resolv|problem solve|solve (?:karta|nahi|nhi)|call (?:receive|uth|pick)|"
+                            r"ghatiya service|service (?:is )?(?:very |too )?(?:poor|bad|worst|slow|low)", _I),
+        or_cotags=()),
+}
+
+# ---- "hard to use the app": a new bucket, built from the Play Store top-issues themes (crash, lag, login loops, confusing layout) ----
+APP_USABILITY = "APP_USABILITY"
+APP_USABILITY_RE = _re.compile(
+    r"not user[- ]?friendly|hard to use|difficult to use|difficult to navigate|confusing (?:app|ui|layout|interface|design)|"
+    r"(?:ui|layout|interface|design) (?:is |was )?(?:confusing|bad|poor|worst|cluttered)|(?:app|ui|layout|interface) redesign|redesigned (?:app|ui)|"
+    r"(?:app|screen|page|dashboard|website) (?:is |keeps |often |sometimes |some times )?(?:very )?(?:slow|lag|lagging|laggy|hang|hangs|freez\w*|crash\w*)|"
+    r"crash(?:es|ing)? (?:and|or) hangs?|hangs? (?:and|or) crash\w*|keeps? crashing|app crash|not loading|won'?t load|something went wrong|"
+    r"login (?:issue|problem|error)|unable to log ?in|can'?t log ?in|cannot log ?in|otp (?:not|isn'?t)|after (?:the )?(?:latest|new) update|"
+    r"(?:can'?t|cannot|hard to) find (?:the )?(?:option|button|feature|section|tab|menu|page|screen)|app (?:is )?(?:very )?(?:slow|laggy)", _I)
+# The first version of this rule matched the bare word "crash" and tagged 28 of 31 items that were about market crashes (found when the quotes
+# were read on the Opportunity page). App context is now required for crash, redesign and "cannot find".
+
+# ---- sub-themes: vague parent buckets are split so a reader can see what is inside them -----------------------------------------
+# Rule-based, on the verified quote plus the first 600 characters of the text. An item can fall in more than one sub-theme; items matching none are
+# shown as "Not specified". Each sub-theme list is ordered from most to least specific.
+def _sub(*pairs):
+    return [(label, _re.compile(rx, _I)) for label, rx in pairs]
+
+
+SUBTHEMES = {
+    APP_USABILITY: _sub(
+        ("Crashes, lag or freezes", r"crash|\blag|hang|freez|slow|not loading|won'?t load|loading"),
+        ("Login, OTP or update loops", r"log ?in|otp|\bupdate|reinstall|sign in"),
+        ("Confusing layout or redesign", r"confus|layout|redesign|\bui\b|interface|design|cluttered|user[- ]?friendly|navigat"),
+        ("Cannot find a feature or screen", r"can'?t find|cannot find|hard to find|where (?:is|to find)|no option"),
+        ("Error message or blank screen", r"something went wrong|error|not showing|not displayed|blank")),
+    "WORRY_FUND_CHOICE": _sub(
+        ("Direct versus regular plan", r"direct|regular plan|commission|expense ratio|distributor|\bagent"),
+        ("Index versus active funds", r"index|nifty 50|\bactive\b|passive|\betf"),
+        ("Which category, or how to split", r"large ?cap|mid ?cap|small ?cap|flexi|multi ?cap|\bsplit|allocation|categor|sectoral|thematic|portfolio"),
+        ("Too many funds or overlap", r"overlap|too many|diversif|duplicate|\d+ (?:different )?funds|\bmany funds"),
+        ("Which specific fund", r"which fund|best fund|recommend|suggest|good fund|top fund|\bpick\b"),
+        ("Doubts about past performance", r"performance|underperform|track record|rolling|returns? (?:are|is|have|has)")),
+    "STOP_BETTER_ALTERNATIVE": _sub(
+        ("Cheaper or direct plan", r"direct plan|expense ratio|regular|cheaper"),
+        ("Index fund or ETF", r"index|\betf|nifty"),
+        ("Direct stocks", r"\bstocks?\b|shares|trading"),
+        ("FD, debt, gold or PPF", r"\bfd\b|fixed deposit|debt|gold|\bppf|bond|\bnps|\bepf"),
+        ("Property or other assets", r"real estate|property|\bflat\b|\bland\b|crypto"),
+        ("Another platform", r"another (?:app|platform)|zerodha|kuvera|\bdhan\b|upstox|paytm|switch(?:ed)? (?:to|from)"),
+        ("Lump sum instead of a SIP", r"lump ?sum")),
+    "PLAT_NO_CONTROL": _sub(
+        ("Cannot pause or skip", r"pause|skip"),
+        ("Cannot cancel or stop", r"cancel|\bstop|discontinu"),
+        ("Cannot change date or amount", r"\bdate\b|amount|modify|\bedit|change"),
+        ("Forced or automatic switch or plan change", r"switch|prime|without (?:my )?(?:consent|permission)|automatic|\bauto\b")),
+    "PLAT_SUPPORT_FAILURE": _sub(
+        ("No response or very slow", r"no (?:response|reply)|not respond|slow|\bdays\b|waiting|delay"),
+        ("Scripted or unhelpful answers", r"script|same (?:answer|reply)|copy|useless|not helpful|unhelpful|generic"),
+        ("Ticket raised, not resolved", r"ticket|escalat|complaint|not resolved|unresolved|resolution"),
+        ("Cannot reach support by call or chat", r"\bcall|chat|phone|helpline|not pick|unreachable")),
+    "STOP_CASH_CRUNCH": _sub(
+        ("Loan or EMI", r"loan|\bemi\b|mortgage"),
+        ("Rising expenses or low savings", r"expens|bills|rent|afford|\bcost|savings|inflation"),
+        ("Income drop or job change", r"income|salary|\bjob\b|laid|unemploy|pay cut|business"),
+        ("A big planned spend", r"wedding|\bhouse\b|\bhome\b|\bcar\b|education|marriage|medical|emergency|travel|purchase")),
+    "STOP_OPS_FAILURE": _sub(
+        ("Debit failed or not deducted", r"not (?:been )?(?:deducted|debited|processed)|fail|bounce|reject"),
+        ("Debited but units not allotted", r"debited|not allotted|allot"),
+        ("Cancelled SIP still deducted", r"cancel|still (?:deduct|debit|charge)"),
+        ("Withdrawal or payout stuck", r"withdraw|redeem|payout|credit|stuck")),
+    "PLAT_FEATURE_MISSING": _sub(
+        ("STP, SWP or switch", r"\bstp\b|\bswp\b|switch"),
+        ("Goal or planning tools", r"goal|planner|planning|calculator|retirement"),
+        ("Alerts or reminders", r"alert|reminder|notification|\bsms\b"),
+        ("Portfolio view, search or sorting", r"portfolio|holdings|search|\bsort|filter|compare|dashboard|net ?worth"),
+        ("SIP options (weekly, step-up, date)", r"weekly|daily|step[- ]?up|top[- ]?up|frequency|sip date|small amount"),
+        ("Products missing (NFO, ETF, IPO)", r"\bnfo\b|\betf|\bipo\b|us stocks|international|gold|bond"),
+        ("Statements and tax reports", r"statement|report|\btax|capital gain|\bpdf")),
+}
+SUBTHEME_ALSO_FOR = {"PLAT_FEATURE_MISSING": ("NEED_OTHER",)}      # these themes are pooled with the parent when counting its sub-themes
+VAGUE_PARENTS_PAGE2 = [APP_USABILITY, "PLAT_NO_CONTROL", "PLAT_SUPPORT_FAILURE", "STOP_OPS_FAILURE", "STOP_CASH_CRUNCH", "STOP_BETTER_ALTERNATIVE"]
+VAGUE_PARENTS_PAGE3 = {"Q5": ["WORRY_FUND_CHOICE"], "Q9": ["PLAT_FEATURE_MISSING"]}
+
+THEME_BRANCH[APP_USABILITY] = "B4"
+CAUSE_THEMES.insert(CAUSE_THEMES.index("PLAT_NO_CONTROL") + 1, APP_USABILITY)
+FIXABLE[APP_USABILITY] = ("High", "Speed, layout and login problems are product fixes, with no recommendation or nudge involved.")
+THEME_LEX[APP_USABILITY] = APP_USABILITY_RE
+LABEL_OVERRIDES[APP_USABILITY] = "Hard to use the app"

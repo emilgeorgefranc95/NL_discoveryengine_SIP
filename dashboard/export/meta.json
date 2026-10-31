@@ -1,9 +1,9 @@
 {
  "as_of": "2026-10-26",
- "built_at": "2026-10-31T01:33:56",
+ "built_at": "2026-10-31T10:29:32",
  "tagged": 2110,
- "relevant": 1967,
- "strong": 1556,
+ "relevant": 1965,
+ "strong": 1553,
  "lapse_stories": 221,
  "definitions": {
   "tagged": "Tagged = an item (post, comment, review) that went through the final (round 2) coding pass and received a label.",
@@ -33,7 +33,7 @@
  "by_source": {
   "Reddit": {
    "tagged": 1379,
-   "relevant": 1369
+   "relevant": 1368
   },
   "Play Store": {
    "tagged": 196,
@@ -41,7 +41,7 @@
   },
   "YouTube": {
    "tagged": 535,
-   "relevant": 420
+   "relevant": 419
   }
  }
 }

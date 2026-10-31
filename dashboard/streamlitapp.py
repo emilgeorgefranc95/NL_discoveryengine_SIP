@@ -62,6 +62,8 @@ def inject_css():
   table.opp {{ font-size:.78rem; }}
   table.opp th, table.opp td {{ padding:.4rem .3rem; }}
   .tiny {{ color:{GREY}; font-size:.76rem; }}
+  .strip {{ margin:-.3rem 0 .7rem; font-size:.9rem; }}
+  .strip .lab {{ color:{GREY}; font-size:.78rem; }}
   .lowc {{ background:#FDECEA; color:#8A2A0B; padding:0 .35rem; border-radius:4px; font-size:.75rem; white-space:nowrap; }}
 </style>""", unsafe_allow_html=True)
 
@@ -75,6 +77,28 @@ def banner():
         st.write(m["definitions"]["tagged"])
         st.write(m["definitions"]["relevant"])
         st.write(m["definitions"]["lapse_story"])
+
+
+def source_strip(label, split):
+    """The split by source behind a headline number, so a reader sees how much of it is Reddit, Play Store or YouTube."""
+    parts = " &nbsp;·&nbsp; ".join(f"<b style='color:{SRC_COL[g]}'>■</b> {g} <b>{fmt(split.get(g, 0))}</b>" for g in SOURCES)
+    st.markdown(f"<div class='strip'><span class='lab'>{esc(label)}</span><br>{parts}</div>", unsafe_allow_html=True)
+
+
+def subtheme_block(parent):
+    sub = T["subthemes"][parent]
+    rows = [x for x in sub["subs"] if x["items"] > 0]
+    head = ("<tr><th>Sub-theme</th><th class='n'>Items</th><th class='n'>Reddit</th><th class='n'>Play Store</th><th class='n'>YouTube</th>"
+            "<th>Example quote</th></tr>")
+    body = "".join(f"<tr><td><b>{esc(x['label'])}</b></td><td class='n'>{fmt(x['items'])}</td><td class='n'>{x['by_source']['Reddit']}</td>"
+                   f"<td class='n'>{x['by_source']['Play Store']}</td><td class='n'>{x['by_source']['YouTube']}</td>"
+                   f"<td class='q'>{quote_html(dict(x['quote'], match=x['quote'].get('match', True))) if x['quote'] else ''}</td></tr>" for x in rows)
+    st.markdown(f"<div style='overflow-x:auto'><table class='t opp'>{head}{body}</table></div>", unsafe_allow_html=True)
+    st.caption(f"{fmt(sub['items'])} relevant items carry this bucket. An item can fall in more than one sub-theme, so the rows add up to more than the bucket. "
+               "Sub-themes are found by keyword rules on the verified quote and the first 600 characters of the text.")
+    if sub["items"] < 10:
+        st.caption(f"Only {sub['items']} items carry this bucket, too few to read as a pattern. Complaints about how the app works are rare in this evidence, "
+                   "because the Play Store reviews were chosen for being about SIPs and mutual funds.")
 
 
 def draft_note(text):
@@ -112,6 +136,7 @@ def page_overview():
     cf = dict(T["combined_funnel"])
     st.title(f"The engine read {fmt(cf['Collected'])} public posts, reviews and comments and kept {fmt(META['relevant'])} as evidence")
     banner()
+    source_strip("Kept as evidence (relevant), by source", T["headline"]["p1"]["relevant"])
     st.subheader("How it works")
     dot = """digraph G { rankdir=LR; bgcolor="transparent"; nodesep=0.25;
       node [shape=box, style="rounded,filled", fontname="Helvetica", fontsize=12, margin="0.18,0.1", color="#0072B2", fillcolor="#EEF4FA"];
@@ -135,15 +160,19 @@ def page_overview():
     rows.append({"Source": "All sources", "Tagged": META["tagged"], "Relevant": META["relevant"],
                  "Earliest item": min(T["dates"][g]["first"] for g in SOURCES), "Latest item": META["as_of"]})
     text_table(pd.DataFrame(rows))
+    ex = T["exclusions"]
+    st.caption("All Reddit items came from an automatic scan of five subreddits, filtered and ranked by rules. No threads were hand-picked, so there is nothing "
+               f"\"curated\" to exclude. Replies written by the platform are excluded ({ex['coded']['excluded']} found among the {fmt(ex['coded']['checked'])} coded items).")
 
     st.subheader("From everything collected to what counts as evidence")
     labels, vals = [k for k, _ in T["combined_funnel"]], [v for _, v in T["combined_funnel"]]
     fig = go.Figure(go.Funnel(y=labels, x=vals, text=[f"{fmt(v)}" for v in vals], textinfo="text+percent previous", marker=dict(color=[SKY, BLUE, BLUE, GREEN, GREEN])))
     st.plotly_chart(style(fig, 330, False), width="stretch")
-    tabs = st.tabs(list(T["funnel"]))
-    for tab, g in zip(tabs, T["funnel"]):
-        with tab:
-            text_table(pd.DataFrame(T["funnel"][g], columns=["Stage", "Items"]))
+    with st.expander("Funnel for each source (table)", expanded=False):
+        tabs = st.tabs(list(T["funnel"]))
+        for tab, g in zip(tabs, T["funnel"]):
+            with tab:
+                text_table(pd.DataFrame(T["funnel"][g], columns=["Stage", "Items"]))
     st.caption("Round 1 coded Reddit only. Round 2 re-coded the Reddit items round 1 kept (plus the hand-labelled set) and coded Play Store and "
                "YouTube once. The headline counts use the final round, so tagged and relevant mean the same thing everywhere.")
 
@@ -184,9 +213,12 @@ def page_opportunities():
     c, a = T["opportunities"]["causes"], T["opportunities"]["after_stop"]
     st.title(f"{c[0]['label']} ranks first among causes of lapse; {a[0]['label'].lower()} leads the problems after stopping")
     banner()
+    source_strip(f"“{c[0]['label']}” (top cause), items by source", T["headline"]["p2"]["cause"])
+    source_strip(f"“{a[0]['label']}” (top problem after stopping), items by source", T["headline"]["p2"]["after_stop"])
     draft_note("Severity bands, fixable ratings and metric-tree branches are the analyst's first read, set in pipeline/rules.py and meant to be "
                "tested in interviews. Counts and quotes are measured.")
-    st.markdown("**How to read it.** *Posts* = relevant items carrying the theme. *Severity* = the share of items with a stated outcome whose author "
+    with st.expander("How to read the tables", expanded=False):
+      st.markdown("*Posts* = relevant items carrying the theme. *Severity* = the share of items with a stated outcome whose author "
                 "actually stopped, paused or reduced (High 45% or more, Medium 30% to 45%, Low below 30%; Unclear when fewer than 10 items state an "
                 "outcome). *Fixable* = whether the brief's limits allow a fix: no fund or stock recommendations, no fear, FOMO or urgency. "
                 "*Score* = % of relevant × severity share × fixable weight (High 1.0, Medium 0.6, Low 0.25), scaled so the top row in each table is 100. "
@@ -195,6 +227,12 @@ def page_opportunities():
     st.markdown(opp_table(c), unsafe_allow_html=True)
     st.subheader("Problems after stopping: what goes wrong when someone exits or tries to come back")
     st.markdown(opp_table(a), unsafe_allow_html=True)
+    st.subheader("What is inside the vague buckets")
+    st.caption("Broad rows such as “hard to use the app” or “no control” are split into sub-themes. Open one to see the split by source and an example quote.")
+    for parent in T["vague_pages"]["page2"]:
+        sub = T["subthemes"][parent]
+        with st.expander(f"{sub['label']}: {fmt(sub['items'])} items", expanded=False):
+            subtheme_block(parent)
 
 
 # ------------------------------------------------------------------ 3. nine questions
@@ -204,6 +242,9 @@ def page_questions():
     least = min(Q, key=lambda q: Q[q]["items"])
     st.title(f"Evidence is deepest for {most} ({fmt(Q[most]['items'])} items) and thinnest for {least} ({fmt(Q[least]['items'])} items)")
     banner()
+    hl = T["headline"]["p3"]
+    source_strip(f"{hl['most_q']} (most evidence), items by source", hl["most"])
+    source_strip(f"{hl['least_q']} (least evidence), items by source", hl["least"])
     st.caption("An item can carry several questions, so counts overlap. Each quote below comes only from items tagged for that question.")
     for q, e in Q.items():
         with st.container(border=True):
@@ -228,6 +269,9 @@ def page_questions():
                 st.caption("Split by source: " + " · ".join(f"{g} {e['by_source'][g]}" for g in SOURCES))
             for qt in e["quotes"]:
                 st.markdown(quote_html(qt), unsafe_allow_html=True)
+            for parent in T["vague_pages"]["page3"].get(q, []):
+                with st.expander(f"Inside “{T['subthemes'][parent]['label']}” ({fmt(T['subthemes'][parent]['items'])} items)", expanded=False):
+                    subtheme_block(parent)
 
 
 # ------------------------------------------------------------------ 4. metric tree
@@ -237,12 +281,17 @@ def page_tree():
     allv = rs["all"]
     tot = sum(allv.values())
     ps = rs["by_source"]["Play Store"]
-    st.title(f"{100 * allv['voluntary'] / tot:.0f}% of items with a stated reason are voluntary; "
-             f"in Play Store reviews {100 * (ps['involuntary'] + ps['mixed']) / max(1, sum(ps.values())):.0f}% involve a platform failure")
+    hv = T["headline"]["p4"]
+    st.title(f"Voluntary reasons dominate on Reddit ({hv['voluntary_pct']['Reddit']}%) and YouTube ({hv['voluntary_pct']['YouTube']}%), "
+             f"but not in Play Store reviews ({hv['voluntary_pct']['Play Store']}%)")
     banner()
+    source_strip(f"Items with a stated reason (the base of each percentage; {100 * allv['voluntary'] / tot:.0f}% voluntary overall, which mostly reflects the source mix)",
+                 hv["base"])
     draft_note("The five branches and the voluntary or involuntary rule are a first decomposition from the evidence. Replace them with your Part 2 "
                "tree in pipeline/rules.py and re-export.")
-    st.markdown(f"**Goal:** {tr['goal']}.  \n**Voluntary** = the investor chooses to stop, pause or reduce (cash pressure, market fall, a better option). "
+    st.markdown(f"**Goal:** {tr['goal']}.")
+    with st.expander("Definitions: voluntary, involuntary, mixed", expanded=False):
+      st.markdown(f"**Voluntary** = the investor chooses to stop, pause or reduce (cash pressure, market fall, a better option). "
                 "**Involuntary** = the SIP stops working without that choice (failed debit, mandate or KYC block, platform charge). "
                 "**Mixed** = both appear in one item. Items with no lapse-related theme are left out of this split.")
     lines = "\n".join(f'b{i} [label="{b}  {v["name"]}\\n{fmt(v["posts"])} items ({v["pct"]}%)"];\n goal -> b{i};' for i, (b, v) in enumerate(tr["branches"].items()))
@@ -306,6 +355,7 @@ def page_segments():
     total = sum(1 for rows in dims.values() for r in rows if r["group"] != "Not stated")
     st.title(f"{low} of {total} segment groups have fewer than {META['low_confidence_below']} lapse stories, so most comparisons are low confidence")
     banner()
+    source_strip("Lapse stories, by source (Play Store is below the low-confidence line)", T["headline"]["p5"]["lapse"])
     s = sg["stated"]
     st.markdown(f"<div class='draft'><b>Read this first.</b> Age, income and money source are missing from many items. Across all relevant items "
                 f"age is stated in {s['Age']['All']:.0f}%, income in {s['Income']['All']:.0f}% and money source in {s['Money source']['All']:.0f}%. "
@@ -361,8 +411,9 @@ def page_explorer():
         d = d[d.quote.str.contains(text, case=False, regex=False)]
     d = d.sort_values(["severity", "date"], ascending=[False, False], kind="stable")   # most severe outcome first, newest first within each
     with banner_slot.container():
-        st.title(f"{fmt(len(d))} verified quotes match the filters, most severe outcomes first")
+        st.title(f"{fmt(len(d))} of {fmt(META['relevant'])} relevant items match the filters; most severe outcomes first")
         banner()
+        source_strip("Matching items, by source", {g: int((d.source_group == g).sum()) for g in SOURCES})
     st.caption("Default: relevant items from 2021 onward. Severity order: stopped, paused, reduced, considering stopping, then everything else. "
                "Every quote is copied word for word from the source and checked by script.")
     view = d[["outcome", "source_label", "date_label", "quote", "Themes", "qs", "stage", "confidence", "link"]].rename(columns={
@@ -384,6 +435,7 @@ def get_index(stamp):
 def page_ask():
     st.title(f"Ask the data: answers come only from the {fmt(META['relevant'])} relevant items, with numbered citations")
     banner()
+    source_strip("Items the answers can draw on, by source", T["headline"]["p7"]["relevant"])
     st.markdown("Ask what people say, for example *Why do people stop a SIP after losing a job?* or *SIP band karne ke kya reasons hain?* "
                 "The answer is written only from the most similar items and cites them. If the data does not cover the question it says so. "
                 "It does not give investment advice, predict markets or calculate returns.")
@@ -438,6 +490,12 @@ def page_validation():
     st.title(f"The engine matched the hand labeller on relevance for {g2['relevance']} of {g2['n']} items, but tag agreement is the weak point "
              f"(precision {g2['precision']}%, recall {g2['recall']}%)")
     banner()
+    gc = T["headline"]["p8"]["golden"]
+    st.markdown(f"<div class='strip'><span class='lab'>Golden set mix: 20 items, plus 6 YouTube comments labelled separately</span><br>"
+                f"<b style='color:{SRC_COL['Reddit']}'>■</b> Reddit posts <b>{gc.get('reddit_post', 0)}</b> &nbsp;·&nbsp; "
+                f"<b style='color:{SRC_COL['Reddit']}'>■</b> Reddit comments <b>{gc.get('reddit_comment', 0)}</b> &nbsp;·&nbsp; "
+                f"<b style='color:{SRC_COL['Play Store']}'>■</b> Play Store reviews <b>{gc.get('playstore_review', 0)}</b> &nbsp;·&nbsp; "
+                f"<b style='color:{SRC_COL['YouTube']}'>■</b> YouTube comments <b>{gc.get('YouTube comment', 0)}</b></div>", unsafe_allow_html=True)
     st.subheader("Prompt versions")
     pv = pd.DataFrame(v["prompt_versions"]).rename(columns={"round": "Round", "codebook": "Codebook", "change": "What it asks for", "problem": "What went wrong"})
     text_table(pv)
@@ -464,15 +522,53 @@ def page_validation():
                "consistent the instructions are, not an independent second opinion. Relevance agreement is not reported: round 2 only re-coded items "
                "round 1 had kept, so it would look near perfect for the wrong reason.")
 
-    c1, c2 = st.columns(2)
-    with c1:
-        st.subheader("AI corrections")
-        st.caption("Output the checking script or a rule changed.")
-        text_table(pd.DataFrame(v["ai_corrections"]).rename(columns={"what": "What", "n": "Items", "fix": "What happened"}))
-    with c2:
-        st.subheader("Human corrections")
-        st.caption("Places where the analyst overrode or tightened the engine.")
+    st.subheader("AI corrections")
+    st.caption("Output that the checking script or a rule changed.")
+    text_table(pd.DataFrame(v["ai_corrections"]).rename(columns={"what": "What", "n": "Items", "fix": "What happened"}))
+
+    st.subheader("Tag review: 20 posts read for each suspicious tag")
+    st.caption("Tags were picked because their quotes least often mention the tag's own subject. For each, 20 items (16 for confusion, all it has) were read and judged "
+               "right, partly right or wrong, then a rule was written and logged. The read was done by Claude, not by a human, and the rules were tuned on "
+               "these same items, so the last two columns are optimistic. A human spot check of the removed items would confirm them. Log: data/manual/ai_tag_review.csv.")
+    rl = pd.DataFrame(T["review_log"])
+    text_table(rl.assign(Removed=lambda d: d.removed.astype(str) + " of " + d.items_with_tag.astype(str),
+                         WrongRemoved=lambda d: d.wrong_removed.astype(str) + " of " + d.wrong.astype(str),
+                         RightRemoved=lambda d: d.right_removed.astype(str) + " of " + d.right.astype(str))
+               [["label", "checked", "right", "partial", "wrong", "Removed", "WrongRemoved", "RightRemoved"]]
+               .rename(columns={"label": "Tag", "checked": "Read", "right": "Right", "partial": "Partly", "wrong": "Wrong", "Removed": "Removed by the rule",
+                                "WrongRemoved": "Wrong ones removed", "RightRemoved": "Right ones removed"}))
+    with st.expander("The rule for each tag", expanded=False):
+        for r in T["review_log"]:
+            st.markdown(f"**{r['label']}.** {r['rule']}")
+
+    st.subheader("Human corrections")
+    ct = T["corrections"]
+    ef = ct["effect"]
+    st.markdown(f"**{ct['n']} corrections to {ct['items']} items** are applied from `{ct['file']}` ({', '.join(f'{n} {k}' for k, n in ct['by_field'].items())}). "
+                f"Effect: relevant {fmt(ef['relevant_before'])} → {fmt(ef['relevant_after'])}, strong {fmt(ef['strong_before'])} → {fmt(ef['strong_after'])}, "
+                f"tagged unchanged at {fmt(ef['tagged'])}. These come from the golden-set labelling, where the analyst's label differed from the engine's. "
+                "Add a row to the file to record another correction, then re-export.")
+    with st.expander(f"All {ct['n']} corrections", expanded=False):
+        text_table(pd.DataFrame(ct["rows"]).rename(columns={"item_id": "Item", "source": "Source", "field": "Field", "ai_value": "Engine said",
+                                                            "human_value": "Analyst says", "reason": "Reason", "corrected_by": "Corrected by", "date_added": "Date"}))
+    with st.expander("Codebook changes made after the golden set", expanded=False):
         text_table(pd.DataFrame(v["human_corrections"]).rename(columns={"what": "What", "fix": "What changed"}))
+
+    st.subheader("Exclusions: platform staff replies")
+    ex = T["exclusions"]
+    st.markdown(f"{esc(ex['rule'])}")
+    col = ex["collected"]
+    st.markdown(f"- **Coded items:** {ex['coded']['excluded']} of {fmt(ex['coded']['checked'])} removed.\n"
+                f"- **All collected text, scanned with the same rule:** Reddit posts {col['reddit_posts']['flagged']} of {fmt(col['reddit_posts']['checked'])}, "
+                f"Reddit comments {col['reddit_comments']['flagged']} of {fmt(col['reddit_comments']['checked'])}, YouTube {col['youtube']['flagged']} of "
+                f"{fmt(col['youtube']['checked'])}. None of the flagged text had been coded.\n"
+                f"- **Play Store:** {fmt(ex['play_store']['raw_with_developer_reply'])} of {fmt(ex['play_store']['raw_reviews'])} reviews have a developer reply, stored in a "
+                f"separate column. Of the {ex['play_store']['coded_checked']} coded reviews checked, {ex['play_store']['coded_text_containing_the_reply']} contain that reply text.")
+    st.caption("Authors of Reddit and YouTube items were never stored, so staff replies can only be found by their wording.")
+
+    with st.expander(f"Consistency checks: {sum(c['passed'] for c in T['consistency'])} of {len(T['consistency'])} passed", expanded=False):
+        text_table(pd.DataFrame(T["consistency"]).assign(passed=lambda d: d.passed.map({True: "Passed", False: "FAILED"}))
+                   .rename(columns={"check": "Check", "passed": "Result", "detail": "Detail"}))
 
     st.subheader("Biases and limits")
     for k, txt in v["biases"]:
